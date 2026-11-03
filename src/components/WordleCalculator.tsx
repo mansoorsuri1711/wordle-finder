@@ -10,14 +10,14 @@ import {
 } from "@/lib/wordleMath";
 
 const fieldClass =
-  "calc-input w-full rounded-2xl border border-ink/12 bg-[#F4F8F7] px-4 py-3.5 text-base font-semibold text-ink outline-none transition placeholder:text-ink/30 hover:border-ink/20 focus:border-teal/60 focus:bg-white focus:ring-4 focus:ring-teal/15";
+  "calc-input w-full rounded-2xl border border-ink/12 bg-[#F3EFFC] px-4 py-3.5 text-base font-semibold text-ink outline-none transition placeholder:text-ink/30 hover:border-ink/20 focus:border-teal/60 focus:bg-white focus:ring-4 focus:ring-teal/15";
 
 const tileInputClass =
   "h-12 w-12 rounded-xl border-2 text-center text-xl font-bold uppercase tracking-wide outline-none transition sm:h-14 sm:w-14 sm:text-2xl";
 
 export default function WordleCalculator({
-  id = "calculator",
-  title = "Wordle Calculator",
+  id = "finder",
+  title = "Wordle Finder",
 }: {
   id?: string;
   title?: string;
@@ -68,10 +68,10 @@ export default function WordleCalculator({
   return (
     <div
       id={id}
-      className="calc-shell relative scroll-mt-20 overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white p-1 shadow-[0_28px_70px_-40px_rgba(13,148,136,0.35)]"
+      className="calc-shell relative scroll-mt-20 overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white p-1 shadow-[0_28px_70px_-40px_rgba(124,58,237,0.35)]"
     >
-      <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-teal/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-10 h-52 w-52 rounded-full bg-orange/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-teal/15 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-10 h-52 w-52 rounded-full bg-sky/15 blur-3xl" />
 
       <div className="relative rounded-[1.4rem] bg-white p-4 sm:p-6 md:p-7">
         <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
@@ -79,18 +79,18 @@ export default function WordleCalculator({
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
               Live word filter
             </p>
-            <h2 className="mt-1 font-display text-2xl font-bold text-ink sm:text-[1.7rem]">
+            <h2 className="mt-1 font-display text-3xl font-bold tracking-tight text-ink sm:text-[2rem]">
               {title}
             </h2>
-            <p className="mt-1 max-w-xl text-sm text-ink/65">
-              Enter green, yellow, and gray clues from your board. The calculator ranks remaining
+            <p className="mt-1.5 max-w-xl text-base text-ink/65">
+              Enter green, yellow, and gray clues from your board. Wordle Finder ranks remaining
               five-letter answers so your next guess cuts the list faster.
             </p>
           </div>
           <button
             type="button"
             onClick={reset}
-            className="rounded-xl border border-ink/10 bg-[#F4F8F7] px-3.5 py-2 text-sm font-semibold text-ink/70 transition hover:border-ink/20 hover:text-ink"
+            className="rounded-xl border border-ink/10 bg-[#F3EFFC] px-3.5 py-2 text-sm font-semibold text-ink/70 transition hover:border-ink/20 hover:text-ink"
           >
             Reset clues
           </button>
@@ -156,7 +156,7 @@ export default function WordleCalculator({
         </div>
 
         <div className="mb-6 flex flex-wrap gap-3">
-          <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-ink/10 bg-[#F4F8F7] px-3.5 py-2.5 text-sm font-semibold text-ink">
+          <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-ink/10 bg-[#F3EFFC] px-3.5 py-2.5 text-sm font-semibold text-ink">
             <input
               type="checkbox"
               checked={hardMode}
@@ -165,7 +165,7 @@ export default function WordleCalculator({
             />
             Hard mode filter
           </label>
-          <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-ink/10 bg-[#F4F8F7] px-3.5 py-2.5 text-sm font-semibold text-ink">
+          <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-ink/10 bg-[#F3EFFC] px-3.5 py-2.5 text-sm font-semibold text-ink">
             <input
               type="checkbox"
               checked={includeUncommon}
@@ -176,7 +176,7 @@ export default function WordleCalculator({
           </label>
         </div>
 
-        <div className="rounded-2xl border border-ink/8 bg-gradient-to-br from-[#F4F8F7] to-white p-4 sm:p-5">
+        <div className="rounded-2xl border border-ink/8 bg-gradient-to-br from-[#F3EFFC] to-white p-4 sm:p-5">
           <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange-deep">

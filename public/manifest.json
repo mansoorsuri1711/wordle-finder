@@ -1,31 +1,31 @@
 {
-  "name": "Wordle Calculator",
-  "short_name": "Wordle Calc",
-  "description": "Free Wordle Calculator — enter green, yellow, and gray clues to rank the best next five-letter guesses instantly.",
+  "name": "Wordle Finder",
+  "short_name": "Wordle Finder",
+  "description": "Free Wordle Finder — enter green, yellow, and gray clues to rank the best next five-letter guesses instantly.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F3F7F6",
-  "theme_color": "#0D9488",
+  "background_color": "#F6F3FF",
+  "theme_color": "#7C3AED",
   "lang": "en-US",
   "icons": [
     {
-      "src": "/favicon.ico?v=20261103-wc1",
+      "src": "/favicon.ico?v=20261104-wf1",
       "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "/android-chrome-192x192.png?v=20261103-wc1",
+      "src": "/android-chrome-192x192.png?v=20261104-wf1",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png?v=20261103-wc1",
+      "src": "/android-chrome-512x512.png?v=20261104-wf1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/android-chrome-512x512.png?v=20261103-wc1",
+      "src": "/android-chrome-512x512.png?v=20261104-wf1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

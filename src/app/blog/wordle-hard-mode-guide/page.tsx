@@ -10,11 +10,11 @@ import {
   SITE_ORIGIN,
 } from "@/lib/siteConfig";
 
-const title = "Wordle Hard Mode Guide: Rules, Tips, and Calculator Use";
+const title = "Wordle Hard Mode Guide: Rules, Tips, and Finder Use";
 const description =
-  "What Wordle hard mode requires, why it changes strategy, and how to keep Wordle Calculator suggestions legal under hard-mode rules.";
+  "What Wordle hard mode requires, why it changes strategy, and how to keep Wordle Finder suggestions legal under hard-mode rules.";
 const slug = "wordle-hard-mode-guide";
-const datePublished = "2026-11-03";
+const datePublished = "2026-11-04";
 
 export const metadata: Metadata = {
   title,
@@ -48,13 +48,13 @@ export default function WordleHardModeGuidePage() {
         ]}
       />
       <article className="container mx-auto max-w-3xl px-4 pb-16 pt-6">
-        <h1 className="font-display text-4xl font-bold text-ink">{title}</h1>
-        <p className="mt-3 text-sm text-ink/50">Updated November 3, 2026 · 9 min read</p>
+        <h1 className="font-display text-5xl font-bold tracking-tight text-ink">{title}</h1>
+        <p className="mt-3 text-sm text-ink/50">Updated November 4, 2026 · 9 min read</p>
         <p className="mt-5 text-lg text-ink/75">
           Hard mode is Wordle with stricter honesty: every new guess must reuse confirmed clues.
-          That single rule removes many classic “probe” words and makes a{" "}
+          That single rule removes many classic “probe” words and makes{" "}
           <Link href="/" className="font-semibold text-teal-deep underline">
-            Wordle Calculator
+            Wordle Finder
           </Link>{" "}
           especially useful for checking legality.
         </p>
@@ -62,7 +62,7 @@ export default function WordleHardModeGuidePage() {
         <div className="my-8 overflow-hidden rounded-2xl border border-ink/10">
           <Image
             src={BRAND_FEATURE_2}
-            alt="Wordle hard mode constrained guesses with calculator filter enabled"
+            alt="Wordle hard mode constrained guesses with Wordle Finder hard-mode filter enabled"
             width={1600}
             height={900}
             priority
@@ -90,11 +90,14 @@ export default function WordleHardModeGuidePage() {
           <h2 className="font-display text-2xl font-bold text-ink">Hard-mode strategy tips</h2>
           <ul className="list-disc space-y-2 pl-5">
             <li>Keep openers information-rich; you get fewer free probes later.</li>
-            <li>When multiple answers share a pattern, prioritize the guess that distinguishes them while still obeying clues.</li>
+            <li>
+              When multiple answers share a pattern, prioritize the guess that distinguishes them
+              while still obeying clues.
+            </li>
             <li>Do not lock soft commitments early—bad yellow interpretations cascade.</li>
           </ul>
 
-          <h2 className="font-display text-2xl font-bold text-ink">Using the calculator in hard mode</h2>
+          <h2 className="font-display text-2xl font-bold text-ink">Using Wordle Finder in hard mode</h2>
           <p>
             Enter your greens, yellows, and grays, then enable the hard mode toggle. Suggestions
             stay inside words that already satisfy every revealed clue—the same constraint Wordle
@@ -109,7 +112,7 @@ export default function WordleHardModeGuidePage() {
           <p>
             Not necessarily. Hard mode is excellent training and a fair personal challenge. Normal
             mode remains better for experimental letter fishing. Many players switch based on mood—
-            just match the calculator toggle to the mode you are actually playing.
+            just match the Wordle Finder toggle to the mode you are actually playing.
           </p>
         </section>
       </article>

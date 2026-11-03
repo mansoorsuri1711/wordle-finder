@@ -65,13 +65,13 @@ export default function BestStartingWordsPage() {
       />
 
       <article className="container mx-auto max-w-3xl px-4 pb-16 pt-6">
-        <h1 className="font-display text-4xl font-bold text-ink md:text-5xl">
+        <h1 className="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
           Best Wordle starting words
         </h1>
         <p className="mt-4 text-lg text-ink/75">
           These openers are ranked by the same letter-frequency engine inside the{" "}
           <Link href="/" className="font-semibold text-teal-deep underline">
-            Wordle Calculator
+            Wordle Finder
           </Link>
           . They maximize common letters before any green, yellow, or gray clues exist.
         </p>
@@ -128,7 +128,7 @@ export default function BestStartingWordsPage() {
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold text-ink">After the opener</h2>
           <p className="mt-3 text-ink/75">
-            A great start still leaves many answers. Use the calculator with your new clues, or read{" "}
+            A great start still leaves many answers. Use the finder with your new clues, or read{" "}
             <Link href="/blog/best-second-wordle-guesses" className="font-semibold text-teal-deep underline">
               best second Wordle guesses
             </Link>{" "}
@@ -139,7 +139,7 @@ export default function BestStartingWordsPage() {
             for mid-game decisions.
           </p>
           <div className="mt-5">
-            <CtaButton href="/#calculator" size="sm">
+            <CtaButton href="/#finder" size="sm">
               OPEN WORDLE CALCULATOR
             </CtaButton>
           </div>

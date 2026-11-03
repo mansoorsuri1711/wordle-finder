@@ -3,29 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 11, 18, 40;
-  --background-start-rgb: 243, 247, 246;
-  --background-end-rgb: 231, 241, 239;
-  --accent: #0d9488;
-  --brand: #f3f7f6;
-  --pink: #0d9488;
-  --violet: #0d9488;
+  --foreground-rgb: 27, 22, 64;
+  --background-start-rgb: 246, 243, 255;
+  --background-end-rgb: 237, 231, 255;
+  --accent: #7c3aed;
+  --brand: #f6f3ff;
+  --pink: #7c3aed;
+  --violet: #7c3aed;
   --mint: #14b8a6;
-  --gold: #ea8c00;
-  --forest: #e7f1ef;
+  --gold: #f59e0b;
+  --forest: #ede7ff;
   --emerald: #6aaa64;
   color-scheme: light;
-  background-color: #f3f7f6;
+  background-color: #f6f3ff;
 }
 
 html {
-  background-color: #f3f7f6;
+  background-color: #f6f3ff;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #f3f7f6;
-  background: #f3f7f6;
+  background-color: #f6f3ff;
+  background: #f6f3ff;
 }
 
 img {
@@ -72,19 +72,23 @@ footer {
 }
 
 .site-atmosphere {
-  background-color: #f3f7f6;
+  background-color: #f6f3ff;
   background-image:
-    radial-gradient(ellipse 90% 60% at 12% -10%, rgba(13, 148, 136, 0.14), transparent 55%),
-    radial-gradient(ellipse 80% 50% at 90% 0%, rgba(234, 140, 0, 0.1), transparent 52%),
-    radial-gradient(ellipse 70% 45% at 50% 110%, rgba(106, 170, 100, 0.08), transparent 55%),
-    linear-gradient(180deg, #ffffff 0%, #f3f7f6 42%, #e7f1ef 100%);
+    radial-gradient(ellipse 90% 60% at 10% -8%, rgba(124, 58, 237, 0.16), transparent 55%),
+    radial-gradient(ellipse 75% 50% at 92% 2%, rgba(245, 158, 11, 0.12), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 48% 108%, rgba(20, 184, 166, 0.1), transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #f6f3ff 40%, #ede7ff 100%);
 }
 
 .brand-gradient-text {
-  background: linear-gradient(120deg, #0b1228 0%, #0d9488 48%, #ea8c00 100%);
+  background: linear-gradient(120deg, #1b1640 0%, #7c3aed 42%, #14b8a6 72%, #f59e0b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.font-display {
+  letter-spacing: -0.03em;
 }
 
 .hero-glow {
@@ -122,10 +126,10 @@ footer {
   align-items: center;
   gap: 0.4rem;
   border-radius: 999px;
-  border: 1px solid rgba(11, 18, 40, 0.1);
-  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(27, 22, 64, 0.1);
+  background: rgba(255, 255, 255, 0.88);
   padding: 0.35rem 0.75rem;
   font-size: 0.8125rem;
-  color: rgba(11, 18, 40, 0.7);
-  box-shadow: 0 1px 2px rgba(11, 18, 40, 0.04);
+  color: rgba(27, 22, 64, 0.7);
+  box-shadow: 0 1px 2px rgba(27, 22, 64, 0.04);
 }

@@ -1,20 +1,21 @@
-# SEO Audit Notes — Wordle Calculator
+# SEO Audit Notes — Wordle Finder
 
-Date: 2026-11-03
+Domain: `https://wordlefinder.app`
 
 ## Implemented
 
-- Unique titles/metas/canonicals per route
-- Organization + SoftwareApplication + FAQ + HowTo JSON-LD on home
-- BreadcrumbList on inner pages / Article on blogs
-- `/sitemap-index.xml`, `/index.xml`, `/image-sitemap.xml`, Content-Signal `robots.txt`
-- Internal links between calculator, solver, starting words, and SERP blogs
-- Descriptive image alts using Wordle Calculator assets in `/public`
+- Branded metadata, OG, Twitter, and `og:site_name` = Wordle Finder
+- Canonical absolute URLs via `SITE_ORIGIN`
+- Sitemap index + page sitemap + image sitemap + Content-Signal robots
+- Visible breadcrumbs + BreadcrumbList JSON-LD on non-home pages
+- Homepage FAQPage + HowTo + SoftwareApplication + AggregateRating
+- Descriptive image alts using Wordle Finder assets in `/public`
+- SERP-aligned blog set (4 posts) with Article schema
 
-## Competitor gaps we target
+## Primary images
 
-- Thin tool pages without strategy depth
-- Weak or missing FAQ schema
-- Alphabetical word dumps without ranking
-- Missing hard-mode education
-- Unrelated or doorway blog clusters
+- `/wordle-finder.webp`
+- `/wordle-finder-online.webp`
+- `/wordle-finder-tool.webp`
+- `/wordle-finder-app.webp`
+- `/feature/og-image-1200x630.png`

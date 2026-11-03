@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "Is a Wordle Solver the same as a Wordle Calculator?",
+    question: "Is a Wordle Solver the same as a Wordle Finder?",
     answer:
-      "They solve the same job with different names. A solver emphasizes finding matching answers; a calculator emphasizes ranking the next guess. Our tool does both on the same engine.",
+      "They solve the same job with different names. A solver emphasizes finding matching answers; a finder emphasizes ranking the next guess. Our tool does both on the same engine.",
   },
   {
     question: "Will the Wordle Solver spoil today’s answer?",
@@ -95,14 +95,14 @@ export default function WordleSolverPage() {
       <div className="container mx-auto max-w-6xl px-4 pb-12 pt-6">
         <div className="mb-8 grid items-center gap-8 lg:grid-cols-2">
           <div>
-            <h1 className="font-display text-4xl font-bold text-ink md:text-5xl">
+            <h1 className="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
               Wordle Solver
             </h1>
             <p className="mt-4 text-lg text-ink/75">
               Stuck after two or three guesses? This Wordle Solver turns the colors on your board
               into a filtered answer list ranked for the next play. Same engine as the{" "}
               <Link href="/" className="font-semibold text-teal-deep underline">
-                Wordle Calculator
+                Wordle Finder
               </Link>
               —framed for the moment you need help finishing.
             </p>

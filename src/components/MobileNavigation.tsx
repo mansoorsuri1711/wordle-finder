@@ -22,13 +22,13 @@ const navSections: NavSection[] = [
   {
     title: 'TOOLS',
     items: [
-      { href: '/', label: 'Wordle Calculator' },
+      { href: '/', label: 'Wordle Finder' },
       { href: '/wordle-solver', label: 'Wordle Solver' },
       { href: '/wordle-helper', label: 'Wordle Helper' },
-      { href: '/wordle-finder', label: 'Wordle Finder' },
+      { href: '/wordle-finder', label: 'Word finder & answers' },
       { href: '/5-letter-words-for-wordle', label: '5 letter words' },
       { href: '/best-wordle-starting-words', label: 'Best starting words' },
-      { href: '/how-to-use-wordle-calculator', label: 'How to use' },
+      { href: '/how-to-use-wordle-finder', label: 'How to use' },
       { href: '/features', label: 'Features' },
     ],
   },
@@ -142,11 +142,11 @@ export default function MobileNavigation() {
         </nav>
         <div className="border-t border-ink/10 p-4">
           <Link
-            href="/#calculator"
+            href="/#finder"
             onClick={() => setIsOpen(false)}
             className="flex w-full items-center justify-center rounded-xl bg-teal px-4 py-3 text-sm font-semibold text-white"
           >
-            Open calculator
+            Open finder
           </Link>
         </div>
       </div>

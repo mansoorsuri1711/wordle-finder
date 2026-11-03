@@ -12,9 +12,9 @@ import {
 
 const title = "Wordle Strategy Tips That Actually Shorten Your Average";
 const description =
-  "Practical Wordle strategy: information-first openers, set-splitting guesses, when to solve, and how a Wordle Calculator supports better decisions.";
+  "Practical Wordle strategy for 2026: information-first openers, set-splitting guesses, when to solve, and how Wordle Finder supports better decisions.";
 const slug = "wordle-strategy-tips";
-const datePublished = "2026-11-03";
+const datePublished = "2026-11-04";
 
 export const metadata: Metadata = {
   title,
@@ -48,21 +48,21 @@ export default function WordleStrategyTipsPage() {
         ]}
       />
       <article className="container mx-auto max-w-3xl px-4 pb-16 pt-6">
-        <h1 className="font-display text-4xl font-bold text-ink">{title}</h1>
-        <p className="mt-3 text-sm text-ink/50">Updated November 3, 2026 · 10 min read</p>
+        <h1 className="font-display text-5xl font-bold tracking-tight text-ink">{title}</h1>
+        <p className="mt-3 text-sm text-ink/50">Updated November 4, 2026 · 10 min read</p>
         <p className="mt-5 text-lg text-ink/75">
           Strong Wordle play is less about lucky vocabulary and more about information timing. These
-          strategy tips mirror what top guides and player communities emphasize—and show where a{" "}
+          tips mirror what players search for alongside helpers—and show where{" "}
           <Link href="/" className="font-semibold text-teal-deep underline">
-            Wordle Calculator
+            Wordle Finder
           </Link>{" "}
-          helps without playing the game for you.
+          on wordlefinder.app coaches without spoiling the fun.
         </p>
 
         <div className="my-8 overflow-hidden rounded-2xl border border-ink/10">
           <Image
             src={BRAND_HERO}
-            alt="Wordle strategy tips illustrated with ranked calculator suggestions"
+            alt="Wordle strategy tips illustrated with ranked Wordle Finder suggestions"
             width={1600}
             height={900}
             priority
@@ -96,22 +96,22 @@ export default function WordleStrategyTipsPage() {
           <h2 className="font-display text-2xl font-bold text-ink">3. Split the remaining set</h2>
           <p>
             When five to twenty answers remain, the best play often eliminates half the list even if
-            it is not the eventual answer. Mentally (or with the calculator) ask: “Which guess
-            creates the most distinct outcomes?” That mindset beats alphabetical guessing.
+            it is not the eventual answer. Mentally—or with Wordle Finder—ask: “Which guess creates
+            the most distinct outcomes?” That mindset beats alphabetical guessing.
           </p>
 
           <h2 className="font-display text-2xl font-bold text-ink">4. Respect double-letter traps</h2>
           <p>
             Boards with one yellow S still allow words with one or two S letters depending on later
             clues. Enter colors carefully—especially when a letter is both present and position-banned.
-            Misreading doubles is a top reason solvers and humans disagree.
+            Misreading doubles is a top reason finders and humans disagree.
           </p>
 
           <h2 className="font-display text-2xl font-bold text-ink">5. Know when to stop probing</h2>
           <p>
             Once two or three words remain and they share structure, switch to solving. Extra probe
             guesses feel smart until you hit guess six with the answer still untested. Use the
-            calculator’s shortlist count as a simple trigger: tiny list → finish.
+            finder&apos;s shortlist count as a simple trigger: tiny list → finish.
           </p>
 
           <h2 className="font-display text-2xl font-bold text-ink">6. Practice hard mode on purpose</h2>
@@ -124,18 +124,18 @@ export default function WordleStrategyTipsPage() {
             before flipping the toggle in the tool.
           </p>
 
-          <h2 className="font-display text-2xl font-bold text-ink">7. Use helpers as coaches</h2>
+          <h2 className="font-display text-2xl font-bold text-ink">7. Use finders as coaches</h2>
           <p>
-            A Wordle Calculator is most valuable when you compare its shortlist to your instinct.
-            Ask why a ranked word sits on top. That feedback loop improves unaided play over time
-            more than copying answers ever will.
+            Wordle Finder is most valuable when you compare its shortlist to your instinct. Ask why a
+            ranked word sits on top. That feedback loop improves unaided play over time more than
+            copying answers ever will.
           </p>
         </section>
 
         <p className="mt-10 text-ink/75">
           Next: put today’s clues into the{" "}
-          <Link href="/#calculator" className="font-semibold text-teal-deep underline">
-            live calculator
+          <Link href="/#finder" className="font-semibold text-teal-deep underline">
+            live Wordle Finder
           </Link>{" "}
           or browse more guides on the{" "}
           <Link href="/blog" className="font-semibold text-teal-deep underline">

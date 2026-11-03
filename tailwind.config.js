@@ -8,56 +8,56 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-outfit)', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        display: ['var(--font-gulkave)', 'var(--font-outfit)', 'sans-serif'],
-        gulkave: ['var(--font-gulkave)', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['var(--font-jakarta)', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['var(--font-syne)', 'var(--font-jakarta)', 'sans-serif'],
       },
       colors: {
-        // Teal + amber brand pulled from Wordle Calculator logo (avoid purple bias)
+        // Pulled from Wordle Finder logo: violet board + teal/amber tiles
         brand: {
-          DEFAULT: '#F3F7F6',
+          DEFAULT: '#F6F3FF',
           soft: '#FFFFFF',
-          deep: '#E7F1EF',
-          glow: '#0D9488',
+          deep: '#EDE7FF',
+          glow: '#7C3AED',
         },
-        mist: '#DCE8E5',
-        blush: '#F3F7F6',
-        ink: '#0B1228',
+        mist: '#E4DCF7',
+        blush: '#F6F3FF',
+        ink: '#1B1640',
         pink: {
-          DEFAULT: '#0D9488',
-          soft: '#14B8A6',
-          deep: '#0F766E',
+          DEFAULT: '#7C3AED',
+          soft: '#A78BFA',
+          deep: '#5B21B6',
         },
         coral: {
-          DEFAULT: '#EA8C00',
-          deep: '#C2410C',
+          DEFAULT: '#F59E0B',
+          deep: '#D97706',
         },
         violet: {
-          DEFAULT: '#0D9488',
-          soft: '#14B8A6',
-          deep: '#0F766E',
+          DEFAULT: '#7C3AED',
+          soft: '#A78BFA',
+          deep: '#5B21B6',
         },
         orange: {
-          DEFAULT: '#EA8C00',
-          soft: '#F59E0B',
-          deep: '#C2410C',
+          DEFAULT: '#F59E0B',
+          soft: '#FBBF24',
+          deep: '#D97706',
         },
         emerald: {
           DEFAULT: '#6AAA64',
           soft: '#538D4E',
           deep: '#3A6B36',
         },
-        lilac: '#5EEAD4',
+        lilac: '#C4B5FD',
+        // Primary action color mapped to brand violet (used site-wide as teal-*)
         teal: {
-          DEFAULT: '#0D9488',
-          deep: '#0F766E',
+          DEFAULT: '#7C3AED',
+          deep: '#5B21B6',
         },
         sky: '#14B8A6',
-        gold: '#EA8C00',
-        primary: '#F3F7F6',
+        gold: '#F59E0B',
+        primary: '#F6F3FF',
         secondary: '#FFFFFF',
-        accent: '#0D9488',
-        sunrise: '#EA8C00',
+        accent: '#7C3AED',
+        sunrise: '#F59E0B',
       },
       keyframes: {
         'fade-up': {

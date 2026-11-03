@@ -12,9 +12,9 @@ import {
 
 const title = "How Wordle Colors Work: Green, Yellow, and Gray Rules";
 const description =
-  "Clear explanation of Wordle green, yellow, and gray tiles—including double letters—and how to enter those clues correctly in a Wordle Calculator.";
+  "Clear explanation of Wordle green, yellow, and gray tiles—including double letters—and how to enter those clues correctly in Wordle Finder.";
 const slug = "how-wordle-colors-work";
-const datePublished = "2026-11-03";
+const datePublished = "2026-11-04";
 
 export const metadata: Metadata = {
   title,
@@ -48,21 +48,21 @@ export default function HowWordleColorsWorkPage() {
         ]}
       />
       <article className="container mx-auto max-w-3xl px-4 pb-16 pt-6">
-        <h1 className="font-display text-4xl font-bold text-ink">{title}</h1>
-        <p className="mt-3 text-sm text-ink/50">Updated November 3, 2026 · 8 min read</p>
+        <h1 className="font-display text-5xl font-bold tracking-tight text-ink">{title}</h1>
+        <p className="mt-3 text-sm text-ink/50">Updated November 4, 2026 · 8 min read</p>
         <p className="mt-5 text-lg text-ink/75">
-          Every Wordle helper—including our{" "}
+          Every Wordle helper—including{" "}
           <Link href="/" className="font-semibold text-teal-deep underline">
-            Wordle Calculator
+            Wordle Finder
           </Link>
           —is only as accurate as the colors you feed it. Here is what each tile means, where players
-          get confused, and how to translate the board into calculator fields.
+          get confused, and how to translate the board into finder fields.
         </p>
 
         <div className="my-8 overflow-hidden rounded-2xl border border-ink/10">
           <Image
             src={BRAND_FEATURE_3}
-            alt="Diagram-style view of Wordle green yellow and gray letter clues"
+            alt="Wordle Finder tool showing green yellow and gray letter clue inputs"
             width={1600}
             height={900}
             priority
@@ -74,9 +74,9 @@ export default function HowWordleColorsWorkPage() {
         <section className="space-y-4 text-ink/80 leading-relaxed">
           <h2 className="font-display text-2xl font-bold text-ink">Green: right letter, right spot</h2>
           <p>
-            A green tile locks that letter into that position for the answer. In the calculator,
-            type the letter into the matching slot. Every remaining candidate must keep that green
-            exactly where it is.
+            A green tile locks that letter into that position for the answer. In Wordle Finder, type
+            the letter into the matching slot. Every remaining candidate must keep that green exactly
+            where it is.
           </p>
 
           <h2 className="font-display text-2xl font-bold text-ink">Yellow: right letter, wrong spot</h2>
@@ -96,12 +96,12 @@ export default function HowWordleColorsWorkPage() {
 
           <h2 className="font-display text-2xl font-bold text-ink">How colors stack across guesses</h2>
           <p>
-            Wordle remembers the whole board. You do not re-enter history word-by-word in the
-            calculator—you enter the net facts: final greens, known yellows with bans, and letters
-            fully eliminated. That is enough for an accurate shortlist.
+            Wordle remembers the whole board. You do not re-enter history word-by-word in Wordle
+            Finder—you enter the net facts: final greens, known yellows with bans, and letters fully
+            eliminated. That is enough for an accurate shortlist.
           </p>
 
-          <h2 className="font-display text-2xl font-bold text-ink">Putting colors into the calculator</h2>
+          <h2 className="font-display text-2xl font-bold text-ink">Putting colors into Wordle Finder</h2>
           <ol className="list-decimal space-y-2 pl-5">
             <li>Greens → position slots</li>
             <li>Yellows → letter list with optional position bans</li>
@@ -110,8 +110,8 @@ export default function HowWordleColorsWorkPage() {
           </ol>
           <p>
             Need the click-by-click version? See{" "}
-            <Link href="/how-to-use-wordle-calculator" className="text-teal-deep underline">
-              how to use the Wordle Calculator
+            <Link href="/how-to-use-wordle-finder" className="text-teal-deep underline">
+              how to use the Wordle Finder
             </Link>
             .
           </p>

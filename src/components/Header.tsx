@@ -7,10 +7,9 @@ import MobileNavigation from './MobileNavigation';
 import { BRAND_LOGO_MARK, SITE_NAME } from '@/lib/siteConfig';
 
 const navLinks = [
-  { href: '/', label: 'Calculator' },
+  { href: '/', label: 'Finder' },
   { href: '/wordle-solver', label: 'Solver' },
   { href: '/wordle-helper', label: 'Helper' },
-  { href: '/wordle-finder', label: 'Finder' },
   { href: '/5-letter-words-for-wordle', label: '5-letter words' },
   { href: '/best-wordle-starting-words', label: 'Starting words' },
   { href: '/blog', label: 'Blog' },
@@ -32,7 +31,7 @@ export default function Header() {
           <div className="relative h-9 w-9 sm:h-10 sm:w-10 mr-2.5 flex-shrink-0 overflow-hidden rounded-xl ring-1 ring-ink/10 transition group-hover:ring-teal/40">
             <Image
               src={BRAND_LOGO_MARK}
-              alt="Wordle Calculator logo"
+              alt="Wordle Finder logo"
               width={40}
               height={40}
               className="object-contain"
@@ -41,7 +40,7 @@ export default function Header() {
           </div>
           <span className="truncate font-display text-sm sm:text-base md:text-[1.05rem] font-bold leading-tight text-ink">
             <span className="hidden sm:inline">{SITE_NAME}</span>
-            <span className="sm:hidden">Wordle Calc</span>
+            <span className="sm:hidden">Finder</span>
           </span>
         </Link>
 
@@ -63,10 +62,10 @@ export default function Header() {
 
         <div className="hidden xl:block">
           <Link
-            href="/#calculator"
-            className="inline-flex items-center rounded-xl bg-teal px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_28px_-12px_rgba(13,148,136,0.7)] transition hover:bg-teal-deep"
+            href="/#finder"
+            className="inline-flex items-center rounded-xl bg-teal px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_28px_-12px_rgba(124,58,237,0.7)] transition hover:bg-teal-deep"
           >
-            Open calculator
+            Open finder
           </Link>
         </div>
 

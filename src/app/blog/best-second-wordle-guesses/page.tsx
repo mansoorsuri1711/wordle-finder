@@ -12,9 +12,9 @@ import {
 
 const title = "Best Second Wordle Guesses After Your Opener";
 const description =
-  "How to choose the best second Wordle guess after SLATE, CRANE, STARE, and similar openers—when to add new letters and when to chase the answer.";
+  "How to choose the best second Wordle guess after SLATE, CRANE, STARE, and similar openers—when to add new letters and when to chase the answer with Wordle Finder.";
 const slug = "best-second-wordle-guesses";
-const datePublished = "2026-11-03";
+const datePublished = "2026-11-04";
 
 export const metadata: Metadata = {
   title,
@@ -48,13 +48,13 @@ export default function BestSecondWordleGuessesPage() {
         ]}
       />
       <article className="container mx-auto max-w-3xl px-4 pb-16 pt-6">
-        <h1 className="font-display text-4xl font-bold text-ink">{title}</h1>
-        <p className="mt-3 text-sm text-ink/50">Updated November 3, 2026 · 8 min read</p>
+        <h1 className="font-display text-5xl font-bold tracking-tight text-ink">{title}</h1>
+        <p className="mt-3 text-sm text-ink/50">Updated November 4, 2026 · 8 min read</p>
         <p className="mt-5 text-lg text-ink/75">
           The second guess decides whether your opener’s information turns into a shortlist—or a
-          stalled board. Here is how to pick it, and how the{" "}
+          stalled board. Here is how to pick it, and how{" "}
           <Link href="/" className="font-semibold text-teal-deep underline">
-            Wordle Calculator
+            Wordle Finder
           </Link>{" "}
           turns those colors into a ranked next move.
         </p>
@@ -62,7 +62,7 @@ export default function BestSecondWordleGuessesPage() {
         <div className="my-8 overflow-hidden rounded-2xl border border-ink/10">
           <Image
             src={BRAND_FEATURE_4}
-            alt="Best second Wordle guesses after a strong opening word"
+            alt="Best second Wordle guesses after a strong opening word using Wordle Finder"
             width={1600}
             height={900}
             priority
@@ -82,8 +82,8 @@ export default function BestSecondWordleGuessesPage() {
           <h2 className="font-display text-2xl font-bold text-ink">If you banked greens or yellows</h2>
           <p>
             Decide: finish or fish? One or two strong greens can justify a solve attempt if the
-            pattern is rare. A single yellow usually means keep gathering. Enter the clues into the
-            calculator and compare the top-ranked options before you commit.
+            pattern is rare. A single yellow usually means keep gathering. Enter the clues into
+            Wordle Finder and compare the top-ranked options before you commit.
           </p>
 
           <h2 className="font-display text-2xl font-bold text-ink">Pairing ideas with common openers</h2>
@@ -111,7 +111,7 @@ export default function BestSecondWordleGuessesPage() {
 
           <h2 className="font-display text-2xl font-bold text-ink">A simple second-guess checklist</h2>
           <ol className="list-decimal space-y-2 pl-5">
-            <li>Enter opener results as greens, yellows, and grays</li>
+            <li>Enter opener results as greens, yellows, and grays in Wordle Finder</li>
             <li>Scan how many words remain</li>
             <li>If dozens remain, prioritize new letter coverage</li>
             <li>If few remain, pick the strongest legal answer candidate</li>

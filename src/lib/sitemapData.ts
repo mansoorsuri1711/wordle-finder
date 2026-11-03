@@ -12,7 +12,7 @@ export type SitemapPage = {
   images?: Array<{ loc: string; title: string; caption: string }>;
 };
 
-const LASTMOD = "2026-11-03";
+const LASTMOD = "2026-11-04";
 
 export const SITEMAP_PAGES: SitemapPage[] = [
   {
@@ -23,12 +23,12 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     images: [
       {
         loc: imageLoc("/logo-icon.png"),
-        title: "Wordle Calculator logo",
-        caption: "Brand mark for wordlecalculator.net",
+        title: "Wordle Finder logo",
+        caption: "Brand mark for wordlefinder.app",
       },
       {
-        loc: imageLoc("/wordle-calculator.webp"),
-        title: "Wordle Calculator",
+        loc: imageLoc("/wordle-finder.webp"),
+        title: "Wordle Finder",
         caption: "Rank the best next five-letter guess online",
       },
     ],
@@ -40,21 +40,21 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-online.webp"),
-        title: "Wordle Calculator features",
+        loc: imageLoc("/wordle-finder-online.webp"),
+        title: "Wordle Finder features",
         caption: "Clue filtering, ranking, and hard mode",
       },
     ],
   },
   {
-    path: "/how-to-use-wordle-calculator",
+    path: "/how-to-use-wordle-finder",
     lastMod: LASTMOD,
     changeFreq: "weekly",
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-tool.webp"),
-        title: "How to use Wordle Calculator",
+        loc: imageLoc("/wordle-finder-tool.webp"),
+        title: "How to use Wordle Finder",
         caption: "Step-by-step green yellow gray clue guide",
       },
     ],
@@ -66,7 +66,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/wordle-calculator.webp"),
+        loc: imageLoc("/wordle-finder.webp"),
         title: "Wordle Solver",
         caption: "Filter Wordle answers from your board",
       },
@@ -79,7 +79,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-tool.webp"),
+        loc: imageLoc("/wordle-finder-tool.webp"),
         title: "Wordle Helper",
         caption: "Get Wordle help narrowing remaining guesses",
       },
@@ -92,7 +92,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-online.webp"),
+        loc: imageLoc("/wordle-finder-online.webp"),
         title: "Wordle Finder",
         caption: "Wordle word finder and answer finder",
       },
@@ -105,7 +105,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-app.webp"),
+        loc: imageLoc("/wordle-finder-app.webp"),
         title: "5 letter words for Wordle",
         caption: "Five-letter Wordle word lists and solver",
       },
@@ -118,7 +118,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-app.webp"),
+        loc: imageLoc("/wordle-finder-app.webp"),
         title: "Best Wordle starting words",
         caption: "Data-backed openers for five-letter Wordle",
       },
@@ -132,7 +132,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     images: [
       {
         loc: imageLoc("/logo-icon.png"),
-        title: "About Wordle Calculator",
+        title: "About Wordle Finder",
         caption: "Logo on the About page",
       },
     ],
@@ -150,7 +150,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/wordle-calculator.webp"),
+        loc: imageLoc("/wordle-finder.webp"),
         title: "Wordle strategy tips",
         caption: "Practical tips to lower your Wordle average",
       },
@@ -163,7 +163,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-tool.webp"),
+        loc: imageLoc("/wordle-finder-tool.webp"),
         title: "How Wordle colors work",
         caption: "Green yellow and gray tile rules explained",
       },
@@ -176,9 +176,9 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-online.webp"),
+        loc: imageLoc("/wordle-finder-online.webp"),
         title: "Wordle hard mode guide",
-        caption: "Hard mode rules and calculator tips",
+        caption: "Hard mode rules and Wordle Finder tips",
       },
     ],
   },
@@ -189,7 +189,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/wordle-calculator-app.webp"),
+        loc: imageLoc("/wordle-finder-app.webp"),
         title: "Best second Wordle guesses",
         caption: "Choose a stronger second guess after your opener",
       },

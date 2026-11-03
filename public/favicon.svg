@@ -1,16 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs>
-  <linearGradient id="tilebg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E2A55"/><stop offset="1" stop-color="#0B1024"/></linearGradient>
-  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#0D9488"/></linearGradient>
-  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080C1C"/><stop offset="1" stop-color="#131B3A"/></linearGradient>
-  <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#14B8A6" stop-opacity="0.18"/><stop offset="1" stop-color="#14B8A6" stop-opacity="0"/></radialGradient>
-  <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.14"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.55"/></filter>
+  <linearGradient id="tilebg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#5B21B6"/></linearGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#6D28D9"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#14B8A6"/></linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F8F5FF"/><stop offset="1" stop-color="#EFFAF8"/></linearGradient>
+  <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#A78BFA" stop-opacity="0.28"/><stop offset="1" stop-color="#A78BFA" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2DD4BF" stop-opacity="0.20"/><stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/></radialGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#1B1640" flood-opacity="0.14"/></filter>
 </defs><g transform="translate(0,0) scale(1.0)">
   <rect width="512" height="512" rx="110" fill="url(#tilebg)"/>
-  <rect x="56" y="56" width="188.0" height="188.0" rx="26" fill="#14B8A6"/>
-  <rect x="268.0" y="56" width="188.0" height="188.0" rx="26" fill="#F59E0B"/>
-  <rect x="56" y="268.0" width="188.0" height="188.0" rx="26" fill="#64748B"/>
-  <rect x="268.0" y="268.0" width="188.0" height="188.0" rx="26" fill="#fff"/>
-  <text x="362" y="410" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="150" fill="#0B1024">%</text>
-</g></svg>
+  <rect x="70" y="130" width="150" height="150" rx="26" fill="#14B8A6"/>
+  <rect x="236" y="130" width="150" height="150" rx="26" fill="#F59E0B"/>
+  <circle cx="300" cy="300" r="112" fill="none" stroke="#fff" stroke-width="44"/>
+  <line x1="380" y1="380" x2="452" y2="452" stroke="#fff" stroke-width="56" stroke-linecap="round"/></g></svg>

@@ -1,12 +1,6 @@
-# Wordle Calculator
+# Wordle Finder
 
-Free Wordle Calculator for [wordlecalculator.net](https://wordlecalculator.net) — enter green, yellow, and gray clues to filter five-letter words and rank the best next guess.
-
-## Stack
-
-- Next.js App Router + TypeScript
-- Tailwind CSS
-- Static SEO routes (sitemap index, robots Content-Signals)
+Free Wordle Finder for [wordlefinder.app](https://wordlefinder.app) — enter green, yellow, and gray clues to filter five-letter words and rank the best next guess.
 
 ## Develop
 

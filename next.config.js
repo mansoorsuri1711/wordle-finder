@@ -24,12 +24,13 @@ const nextConfig = {
     return [
       // Retired Spanish calculator + prior-brand routes
       { source: '/funciones', destination: '/features', permanent: true },
-      { source: '/como-usar', destination: '/how-to-use-wordle-calculator', permanent: true },
+      { source: '/como-usar', destination: '/how-to-use-wordle-finder', permanent: true },
+      { source: '/how-to-use-wordle-calculator', destination: '/how-to-use-wordle-finder', permanent: true },
       { source: '/calculadora-trigonometrica', destination: '/wordle-solver', permanent: true },
       { source: '/grados-a-radianes', destination: '/best-wordle-starting-words', permanent: true },
       { source: '/notacion-cientifica', destination: '/best-wordle-starting-words', permanent: true },
-      { source: '/how-it-works', destination: '/how-to-use-wordle-calculator', permanent: true },
-      { source: '/how-to-convert-salary-to-hourly', destination: '/how-to-use-wordle-calculator', permanent: true },
+      { source: '/how-it-works', destination: '/how-to-use-wordle-finder', permanent: true },
+      { source: '/how-to-convert-salary-to-hourly', destination: '/how-to-use-wordle-finder', permanent: true },
       { source: '/hourly-to-salary-calculator', destination: '/wordle-solver', permanent: true },
       { source: '/salary-conversion-chart', destination: '/best-wordle-starting-words', permanent: true },
       { source: '/wordle-help', destination: '/wordle-helper', permanent: true },

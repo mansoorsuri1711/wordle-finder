@@ -18,9 +18,9 @@ export default function DisclaimerPage() {
         ]}
       />
       <div className="container mx-auto max-w-3xl px-4 pb-10 pt-8">
-        <h1 className="mb-6 font-display text-3xl font-bold text-ink">Disclaimer</h1>
+        <h1 className="mb-6 font-display text-4xl font-bold tracking-tight text-ink">Disclaimer</h1>
         <div className="space-y-5 text-ink/80 leading-relaxed">
-          <p>Last updated: November 3, 2026</p>
+          <p>Last updated: November 4, 2026</p>
           <p>
             {SITE_NAME} on {SITE_DOMAIN} is an unofficial Wordle helper. It is not affiliated with,
             endorsed by, or sponsored by the New York Times or the official Wordle game.

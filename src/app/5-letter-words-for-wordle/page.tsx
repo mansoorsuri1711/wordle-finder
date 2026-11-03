@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "How many 5 letter words does Wordle use?",
     answer:
-      "Players typically face a few thousand possible answers. This page samples from an answer-style bank of about 2,300 five-letter words, and the calculator can expand to a wider guess list when needed.",
+      "Players typically face a few thousand possible answers. This page samples from an answer-style bank of about 2,300 five-letter words, and the finder can expand to a wider guess list when needed.",
   },
   {
     question: "What are the best 5 letter words for Wordle openers?",
@@ -85,7 +85,7 @@ export default function FiveLetterWordsPage() {
 
       <article className="container mx-auto max-w-6xl px-4 pb-16 pt-6">
         <div className="mx-auto max-w-3xl">
-          <h1 className="font-display text-4xl font-bold text-ink md:text-5xl">
+          <h1 className="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
             5 letter words for Wordle
           </h1>
           <p className="mt-4 text-lg text-ink/75">

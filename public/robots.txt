@@ -63,4 +63,4 @@ User-agent: *
 Disallow: /api/
 Disallow: /_next/
 
-Sitemap: https://wordlecalculator.net/sitemap-index.xml
+Sitemap: https://wordlefinder.app/sitemap-index.xml

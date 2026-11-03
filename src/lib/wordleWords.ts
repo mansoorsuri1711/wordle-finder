@@ -1,4 +1,4 @@
-/** Wordle answer candidates + valid guess dictionary for the Wordle Calculator. */
+/** Wordle answer candidates + valid guess dictionary for Wordle Finder. */
 export const WORDLE_ANSWERS = [
   "aback", "abase", "abate", "abbey", "abbot", "abhor", "abide", "abled", "abode", "abort", "about", "above",
   "abuse", "abyss", "acorn", "acrid", "actor", "acute", "adage", "adapt", "adept", "admin", "admit", "adobe",

@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "What is a Wordle helper?",
     answer:
-      "A Wordle helper is a mid-game aid: you enter the colors you already have, it counts remaining five-letter options, and it points to a high-value next guess. It is the same engine as our calculator and solver, framed for the moment you need help.",
+      "A Wordle helper is a mid-game aid: you enter the colors you already have, it counts remaining five-letter options, and it points to a high-value next guess. It is the same engine as our finder and solver, framed for the moment you need help.",
   },
   {
     question: "Is Wordle help the same as a Wordle guesser?",
@@ -76,13 +76,13 @@ export default function WordleHelperPage() {
       <div className="container mx-auto max-w-6xl px-4 pb-12 pt-6">
         <div className="mb-8 grid items-center gap-8 lg:grid-cols-2">
           <div>
-            <h1 className="font-display text-4xl font-bold text-ink md:text-5xl">Wordle Helper</h1>
+            <h1 className="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">Wordle Helper</h1>
             <p className="mt-4 text-lg text-ink/75">
               Need Wordle help without spoiling the fun? This Wordle helper—and Wordle guesser—reads
               your greens, yellows, and grays, shows how many answers remain, and ranks the next guess
               that cuts the field fastest. Same engine as the{" "}
               <Link href="/" className="font-semibold text-teal-deep underline">
-                Wordle Calculator
+                Wordle Finder
               </Link>{" "}
               and{" "}
               <Link href="/wordle-solver" className="font-semibold text-teal-deep underline">

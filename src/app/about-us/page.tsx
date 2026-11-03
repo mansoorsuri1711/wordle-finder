@@ -6,12 +6,12 @@ import CtaButton from "@/components/CtaButton";
 import { BRAND_LOGO, CONTACT_EMAIL, SITE_DOMAIN, SITE_NAME, SITE_ORIGIN } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About Us — Wordle Calculator",
+  title: "About Us — Wordle Finder",
   description:
-    "About Wordle Calculator on wordlecalculator.net: a free browser tool that filters five-letter words from green, yellow, and gray clues and ranks stronger next guesses.",
+    "About Wordle Finder on wordlefinder.app: a free browser tool that filters five-letter words from green, yellow, and gray clues and ranks stronger next guesses.",
   alternates: { canonical: `${SITE_ORIGIN}/about-us` },
   openGraph: {
-    title: "About Us — Wordle Calculator",
+    title: "About Us — Wordle Finder",
     description: `Independent Wordle helper toolkit at ${SITE_DOMAIN}.`,
     url: `${SITE_ORIGIN}/about-us`,
     siteName: SITE_NAME,
@@ -28,7 +28,7 @@ export default function AboutPage() {
           <div className="relative h-40 w-40 flex-shrink-0 overflow-hidden rounded-2xl border border-ink/10 bg-brand-soft">
             <Image
               src={BRAND_LOGO}
-              alt="Wordle Calculator logo"
+              alt="Wordle Finder logo"
               fill
               sizes="160px"
               className="object-contain p-3"
@@ -36,12 +36,12 @@ export default function AboutPage() {
             />
           </div>
           <div>
-            <h1 className="mb-4 font-display text-3xl font-bold text-ink md:text-4xl">
+            <h1 className="mb-4 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
               About {SITE_NAME}
             </h1>
             <p className="text-lg leading-relaxed text-ink/80">
               We build one clear thing: a free{" "}
-              <strong className="text-ink">Wordle Calculator</strong> that turns board colors into a
+              <strong className="text-ink">Wordle Finder</strong> that turns board colors into a
               ranked shortlist of five-letter guesses. We operate at{" "}
               <strong className="text-ink">{SITE_DOMAIN}</strong>.
             </p>
@@ -50,7 +50,7 @@ export default function AboutPage() {
 
         <div className="space-y-5 text-ink/80 leading-relaxed">
           <p>
-            Wordle is more fun when the mid-game does not feel like a coin flip. Our calculator
+            Wordle is more fun when the mid-game does not feel like a coin flip. Our finder
             applies the same green, yellow, and gray constraints you see on the board, then ranks
             remaining words by letter value so your next try teaches more.
           </p>
@@ -64,7 +64,7 @@ export default function AboutPage() {
             <li>
               The live{" "}
               <Link href="/" className="text-teal-deep underline">
-                Wordle Calculator
+                Wordle Finder
               </Link>{" "}
               and{" "}
               <Link href="/wordle-solver" className="text-teal-deep underline">
@@ -93,8 +93,8 @@ export default function AboutPage() {
             .
           </p>
           <div className="pt-2">
-            <CtaButton href="/#calculator" size="sm">
-              OPEN CALCULATOR
+            <CtaButton href="/#finder" size="sm">
+              OPEN FINDER
             </CtaButton>
           </div>
         </div>

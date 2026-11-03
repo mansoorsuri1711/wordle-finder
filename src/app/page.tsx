@@ -13,6 +13,7 @@ import {
   BRAND_FEATURE_4,
   BRAND_HERO,
   OG_IMAGE,
+  SITE_DOMAIN,
   SITE_NAME,
   SITE_ORIGIN,
   SITE_RATING,
@@ -20,14 +21,14 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    default: "Wordle Calculator — Free Helper & Next-Guess Ranker",
+    default: "Wordle Finder — Free Solver, Helper & Next-Guess Ranker",
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Free Wordle Calculator. Enter green, yellow, and gray clues to filter five-letter words and rank the best next guess. Hard mode supported. No signup.",
+    "Free Wordle Finder online. Enter green, yellow, and gray clues to filter five-letter words, find possible answers, and rank the best next guess. Hard mode supported.",
   alternates: { canonical: SITE_ORIGIN },
   openGraph: {
-    title: "Wordle Calculator — Free Helper & Next-Guess Ranker",
+    title: "Wordle Finder — Free Solver, Helper & Next-Guess Ranker",
     description:
       "Turn your Wordle board into a short list of ranked answers. Green, yellow, and gray clues in—best next guess out.",
     url: SITE_ORIGIN,
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Wordle Calculator — rank the best next five-letter guess online",
+        alt: "Wordle Finder — rank the best next five-letter guess online",
       },
     ],
   },
@@ -47,14 +48,14 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "What is a Wordle Calculator?",
+    question: "What is a Wordle Finder?",
     answer:
-      "A Wordle Calculator is a clue filter and next-guess ranker. You enter green (correct spot), yellow (wrong spot), and gray (absent) letters from your board. It narrows the five-letter word list and sorts strong candidates so you can finish in fewer tries.",
+      "A Wordle Finder is a clue-aware word finder and next-guess ranker. You enter green (correct spot), yellow (wrong spot), and gray (absent) letters from your board. It narrows the five-letter word list and sorts strong candidates so you can finish in fewer tries.",
   },
   {
-    question: "How do I use this Wordle Calculator?",
+    question: "How do I use this Wordle Finder?",
     answer:
-      "Type each green letter into its position slot, list yellow letters (add a position number to ban that slot), then add gray letters that are fully ruled out. The calculator updates the remaining words and highlights the strongest next guesses. See the full walkthrough on our how-to page.",
+      "Type each green letter into its position slot, list yellow letters (add a position number to ban that slot), then add gray letters that are fully ruled out. The finder updates the remaining words and highlights the strongest next guesses. See the full walkthrough on our how-to page.",
   },
   {
     question: "What do green, yellow, and gray mean in Wordle?",
@@ -62,9 +63,9 @@ const faqs = [
       "Green means the letter is in the answer and in that exact spot. Yellow means the letter is in the answer but not in that spot. Gray means the letter does not appear in the answer (unless you already know it appears elsewhere from a green or yellow tile).",
   },
   {
-    question: "Is using a Wordle Calculator cheating?",
+    question: "Is using a Wordle Finder cheating?",
     answer:
-      "It is a personal choice. Searches for “Wordle cheat” usually mean the same helper tools. Many players use a calculator to learn letter patterns, recover a stuck board, or practice hard mode. Others prefer a fully unaided streak. Use it the way that keeps the puzzle fun for you.",
+      "It is a personal choice. Searches for “Wordle cheat” usually mean the same helper tools. Many players use a finder to learn letter patterns, recover a stuck board, or practice hard mode. Others prefer a fully unaided streak. Use it the way that keeps the puzzle fun for you.",
   },
   {
     question: "How many Wordle answers are there?",
@@ -72,7 +73,7 @@ const faqs = [
       "The common answer bank used by helpers is about 2,300 five-letter words. Valid guesses can be a much larger set. Our default mode ranks likely answers; turn on uncommon guesses when you need a broader dictionary.",
   },
   {
-    question: "Does the Wordle Calculator support hard mode?",
+    question: "Does the Wordle Finder support hard mode?",
     answer:
       "Yes. Enable hard mode in the tool so suggestions must reuse every green and yellow clue you already revealed—the same constraint Wordle applies when hard mode is on.",
   },
@@ -92,22 +93,27 @@ const faqs = [
       "By default we prioritize the answer-style word bank Wordle players actually encounter, not every obscure dictionary entry. Enable uncommon guesses if you want a wider list of valid spellings.",
   },
   {
-    question: "Is Wordle Calculator free on wordlecalculator.net?",
+    question: "Is Wordle Finder free on wordlefinder.app?",
     answer:
-      "Yes. The core Wordle Calculator runs free in your browser—no account, no download, and no paywall for clue filtering and ranked suggestions.",
+      "Yes. The core Wordle Finder runs free in your browser—no account, no download, and no paywall for clue filtering and ranked suggestions.",
   },
   {
     question: "Does this work with the New York Times Wordle?",
     answer:
-      "Yes. Enter the green, yellow, and gray tiles from the NYT Wordle board and the calculator filters five-letter candidates the same way. It is an unofficial helper—not affiliated with the New York Times.",
+      "Yes. Enter the green, yellow, and gray tiles from the NYT Wordle board and the finder filters five-letter candidates the same way. It is an unofficial helper—not affiliated with the New York Times.",
   },
   {
-    question: "Can I use the Wordle Calculator on mobile?",
+    question: "Can I use the Wordle Finder on mobile?",
     answer:
-      "Yes. wordlecalculator.net is a responsive web tool. Open it in your phone browser, enter clues from today’s puzzle, and read the ranked shortlist without installing an app.",
+      "Yes. wordlefinder.app is a responsive web tool. Open it in your phone browser, enter clues from today’s puzzle, and read the ranked shortlist without installing an app.",
   },
   {
-    question: "Does the calculator only list answers or also hints?",
+    question: "What is the difference between a Wordle Finder, Solver, and Helper?",
+    answer:
+      "They describe the same job with different search wording. A finder emphasizes matching words to your pattern, a solver emphasizes finishing the puzzle, and a helper emphasizes hints. On wordlefinder.app, one engine powers all three views with ranked next guesses.",
+  },
+  {
+    question: "Does the finder only list answers or also hints?",
     answer:
       "It ranks remaining words and highlights strong next guesses—so you get both a shortlist and a hint about which play gathers the most information. It does not auto-publish today’s official answer.",
   },
@@ -127,7 +133,7 @@ const howToSteps = [
   },
   {
     title: "List gray letters",
-    body: "Add letters your guesses fully eliminated. The calculator keeps letters that are also green or yellow elsewhere.",
+    body: "Add letters your guesses fully eliminated. The finder keeps letters that are also green or yellow elsewhere.",
   },
   {
     title: "Pick a ranked guess",
@@ -160,7 +166,7 @@ const websiteSchema = {
   name: SITE_NAME,
   url: SITE_ORIGIN,
   description:
-    "Free Wordle Calculator to filter five-letter words from green, yellow, and gray clues and rank the best next guess.",
+    "Free Wordle Finder to filter five-letter words from green, yellow, and gray clues and rank the best next guess.",
   potentialAction: {
     "@type": "SearchAction",
     target: `${SITE_ORIGIN}/?q={search_term_string}`,
@@ -171,7 +177,7 @@ const websiteSchema = {
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How to use the Wordle Calculator",
+  name: "How to use the Wordle Finder",
   description:
     "Enter Wordle tile colors to filter remaining five-letter answers and choose a strong next guess.",
   step: howToSteps.map((step, index) => ({
@@ -199,7 +205,7 @@ const softwareSchema = {
   "@context": "https://schema.org",
   ...WEB_APPLICATION_JSON_LD,
   description:
-    "Browser-based Wordle Calculator that filters five-letter words from tile clues and ranks next guesses.",
+    "Browser-based Wordle Finder that filters five-letter words from tile clues and ranks next guesses.",
   screenshot: {
     "@type": "ImageObject",
     url: `${SITE_ORIGIN}${BRAND_HERO}`,
@@ -235,12 +241,12 @@ export default function HomePage() {
 
         <div className="container relative mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl animate-fade-up text-center">
-            <h1 className="font-display text-4xl font-bold leading-[1.08] text-ink sm:text-5xl md:text-[3.25rem]">
-              <span className="brand-gradient-text">Wordle Calculator</span>
+            <h1 className="font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl md:text-[4.25rem]">
+              <span className="brand-gradient-text">Wordle Finder</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-ink/75 sm:text-xl">
+            <p className="mx-auto mt-5 max-w-2xl text-xl text-ink/75 sm:text-2xl">
               Enter green, yellow, and gray clues. Get a ranked shortlist of five-letter words and a
-              stronger next guess—free in your browser.
+              stronger next guess—free on {SITE_DOMAIN}.
             </p>
           </div>
         </div>
@@ -248,7 +254,7 @@ export default function HomePage() {
 
       <section className="px-4 pb-12 sm:px-6 md:px-8">
         <div className="container mx-auto max-w-6xl">
-          <WordleCalculator />
+          <WordleCalculator title="Wordle Finder" id="finder" />
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
             <span className="trust-chip" aria-label={`${SITE_RATING.ratingValue} out of 5 stars`}>
               <span className="font-semibold text-ink">{SITE_RATING.ratingValue}★</span>
@@ -258,10 +264,10 @@ export default function HomePage() {
             <span className="trust-chip">Hard mode supported</span>
           </div>
           <div className="mx-auto mt-10 max-w-4xl animate-fade-up">
-            <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-[0_28px_70px_-40px_rgba(13,148,136,0.45)]">
+            <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-[0_28px_70px_-40px_rgba(124,58,237,0.4)]">
               <Image
                 src={BRAND_HERO}
-                alt="Wordle Calculator interface showing ranked five-letter word suggestions"
+                alt="Wordle Finder interface showing ranked five-letter word suggestions"
                 width={1600}
                 height={900}
                 priority
@@ -276,11 +282,11 @@ export default function HomePage() {
       <section className="px-4 pb-14 sm:px-6 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl">
-            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
-              How the Wordle Calculator works
+            <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
+              How the Wordle Finder works
             </h2>
-            <p className="mt-3 text-lg text-ink/70">
-              Every tile color is a constraint. The calculator applies those constraints to a
+            <p className="mt-3 text-lg text-ink/70 sm:text-xl">
+              Every tile color is a constraint. Wordle Finder applies those constraints to a
               five-letter answer bank, then ranks what is left so your next guess does more than
               hope.
             </p>
@@ -301,8 +307,8 @@ export default function HomePage() {
           </div>
           <p className="mt-5 text-sm text-ink/60">
             Prefer a longer walkthrough with examples? Read{" "}
-            <Link href="/how-to-use-wordle-calculator" className="font-semibold text-teal-deep underline">
-              how to use the Wordle Calculator
+            <Link href="/how-to-use-wordle-finder" className="font-semibold text-teal-deep underline">
+              how to use the Wordle Finder
             </Link>
             .
           </p>
@@ -313,7 +319,7 @@ export default function HomePage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+              <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
                 What is Wordle and how do you play?
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-ink/75">
@@ -325,16 +331,16 @@ export default function HomePage() {
               </p>
               <p className="mt-4 text-lg leading-relaxed text-ink/75">
                 Good play starts with a word rich in common letters, then reuses every green and
-                yellow confirmation. When the board gets crowded, this Wordle Calculator does the
+                yellow confirmation. When the board gets crowded, Wordle Finder does the
                 bookkeeping so you can focus on the only choice that matters: the next guess.
               </p>
             </div>
             <div>
-              <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
-                More than a generic word finder
+              <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
+                Wordle word finder vs generic unscramblers
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-ink/75">
-                A plain word finder only cares which letters exist. A Wordle Calculator / solver /
+                A plain word finder only cares which letters exist. A Wordle Finder / solver /
                 helper respects position: greens are locked to a slot, yellows must appear somewhere
                 else, and grays are excluded unless another clue proves the letter still belongs.
                 That is why results stay short and relevant instead of dumping every five-letter
@@ -353,12 +359,12 @@ export default function HomePage() {
       <section className="px-4 pb-14 sm:px-6 md:px-8">
         <div className="container mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
-              What makes this Wordle Calculator different
+            <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
+              What makes this Wordle Finder different
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/75">
               Many helpers dump an unsorted dictionary dump after you type a few letters. This
-              Wordle Calculator is built for the moment you are mid-puzzle: lock greens, respect
+              Wordle Finder is built for the moment you are mid-puzzle: lock greens, respect
               yellow bans, drop grays, then see which answers still fit and which guess teaches the
               most.
             </p>
@@ -387,13 +393,17 @@ export default function HomePage() {
               <Link href="/wordle-solver" className="font-semibold text-teal-deep underline">
                 Wordle Solver
               </Link>{" "}
-              view.
+              and{" "}
+              <Link href="/wordle-helper" className="font-semibold text-teal-deep underline">
+                Wordle Helper
+              </Link>{" "}
+              views.
             </p>
           </div>
           <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-sm">
             <Image
               src={BRAND_FEATURE_2}
-              alt="Wordle Calculator online filtering green yellow and gray letter clues"
+              alt="Wordle Finder online filtering green yellow and gray letter clues"
               width={1600}
               height={900}
               sizes="(max-width: 1024px) 100vw, 560px"
@@ -408,11 +418,11 @@ export default function HomePage() {
           <div className="rounded-[1.75rem] border border-ink/10 bg-white p-6 shadow-sm md:p-8">
             <div className="grid gap-8 lg:grid-cols-2">
               <div>
-                <h2 className="font-display text-3xl font-bold text-ink">
+                <h2 className="font-display text-4xl font-bold tracking-tight text-ink">
                   Strong Wordle starting words
                 </h2>
                 <p className="mt-3 text-ink/70">
-                  Before any clues exist, the calculator ranks openers by how often their letters
+                  Before any clues exist, Wordle Finder ranks openers by how often their letters
                   appear in the answer bank and where those letters usually sit. These are reliable
                   first guesses—not guaranteed day-one greens.
                 </p>
@@ -423,7 +433,7 @@ export default function HomePage() {
                       className={`rounded-xl border px-3 py-2 font-mono text-sm font-bold uppercase tracking-wider ${
                         index < 3
                           ? "border-orange/30 bg-orange/10 text-orange-deep"
-                          : "border-ink/10 bg-[#F4F8F7] text-ink"
+                          : "border-ink/10 bg-[#F3EFFC] text-ink"
                       }`}
                     >
                       {item.word}
@@ -494,7 +504,7 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-sm order-2 lg:order-1">
             <Image
               src={BRAND_FEATURE_3}
-              alt="Wordle Calculator tool ranking remaining answers after each guess"
+              alt="Wordle Finder tool ranking remaining answers after each guess"
               width={1600}
               height={900}
               sizes="(max-width: 1024px) 100vw, 560px"
@@ -502,13 +512,13 @@ export default function HomePage() {
             />
           </div>
           <div className="order-1 lg:order-2">
-            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+            <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
               Color clues, hard mode, and honest limits
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/75">
               Green locks a letter in place. Yellow says “present, but not here.” Gray removes a
               letter unless another clue proves it still belongs. Getting those three states right
-              is 90% of accurate Wordle math—and exactly what this calculator listens to.
+              is 90% of accurate Wordle math—and exactly what this finder listens to.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-ink/75">
               Hard mode players must reuse every revealed clue. Flip the hard mode toggle so the
@@ -534,8 +544,8 @@ export default function HomePage() {
 
       <section className="px-4 pb-14 sm:px-6 md:px-8">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
-            Practical Wordle strategy with a calculator
+          <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
+            Practical Wordle strategy with a finder
           </h2>
           <p className="mt-3 max-w-3xl text-lg text-ink/70">
             Use the tool as a coach, not only as an answer key. Strong players gather information
@@ -562,7 +572,7 @@ export default function HomePage() {
               },
               {
                 title: "Solve when the list is small",
-                body: "Once the calculator shows a handful of words, switch from probing to finishing. That is when answering beats information gathering.",
+                body: "Once the finder shows a handful of words, switch from probing to finishing. That is when answering beats information gathering.",
               },
               {
                 title: "Draft before you lock",
@@ -585,6 +595,9 @@ export default function HomePage() {
             <Link href="/blog/best-second-wordle-guesses" className="font-semibold text-teal-deep underline">
               Best second Wordle guesses
             </Link>
+            <Link href="/5-letter-words-for-wordle" className="font-semibold text-teal-deep underline">
+              5 letter words for Wordle
+            </Link>
             <Link href="/blog" className="font-semibold text-teal-deep underline">
               All guides
             </Link>
@@ -595,21 +608,21 @@ export default function HomePage() {
       <section className="px-4 pb-14 sm:px-6 md:px-8">
         <div className="container mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+            <h2 className="font-display text-4xl font-bold tracking-tight text-ink md:text-[2.75rem]">
               Built for stuck boards and clean finishes
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/75">
               Mid-game Wordle is where most streaks break: two greens, a yellow, and twenty words
-              still possible. Paste those clues into the Wordle Calculator, scan the ranked list,
-              and choose a guess that either ends the puzzle or splits the remaining set.
+              still possible. Paste those clues into Wordle Finder, scan the ranked list, and choose
+              a guess that either ends the puzzle or splits the remaining set.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-ink/75">
               Beginners get a transparent explanation of each color. Advanced players get hard mode
-              filtering and uncommon probes. Everyone gets a free tool that stays on
-              wordlecalculator.net—no app install required.
+              filtering and uncommon probes. Everyone gets a free tool that stays on{" "}
+              {SITE_DOMAIN}—no app install required.
             </p>
             <div className="mt-6">
-              <CtaButton href="/#calculator" size="sm" ariaLabel="Return to Wordle Calculator">
+              <CtaButton href="/#finder" size="sm" ariaLabel="Return to Wordle Finder">
                 TRY IT NOW
               </CtaButton>
             </div>
@@ -617,7 +630,7 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-sm">
             <Image
               src={BRAND_FEATURE_4}
-              alt="Wordle Calculator app-style view for mobile and desktop browsers"
+              alt="Wordle Finder app-style view for mobile and desktop browsers"
               width={1600}
               height={900}
               sizes="(max-width: 1024px) 100vw, 560px"
@@ -630,7 +643,7 @@ export default function HomePage() {
       <section className="px-4 pb-16 sm:px-6 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <FaqSection
-            title="Wordle Calculator FAQs"
+            title="Wordle Finder FAQs"
             items={faqs}
             includeSchema={false}
           />
@@ -639,16 +652,16 @@ export default function HomePage() {
 
       <section className="px-4 pb-16 sm:px-6 md:px-8">
         <div className="container mx-auto max-w-6xl overflow-hidden rounded-[1.75rem] border border-teal/20 bg-gradient-to-br from-teal/10 via-white to-orange/10 p-8 md:p-10">
-          <h2 className="font-display text-3xl font-bold text-ink">
+          <h2 className="font-display text-4xl font-bold tracking-tight text-ink">
             Ready for a sharper next guess?
           </h2>
           <p className="mt-3 max-w-2xl text-lg text-ink/75">
-            Open the free Wordle Calculator, enter today’s clues, and turn a crowded board into a
+            Open the free Wordle Finder, enter today’s clues, and turn a crowded board into a
             short ranked list. Play for learning, play for the streak—either way, start with better
             information.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <CtaButton href="/#calculator">OPEN CALCULATOR</CtaButton>
+            <CtaButton href="/#finder">OPEN FINDER</CtaButton>
             <Link
               href="/contact-us"
               className="inline-flex items-center rounded-2xl border border-ink/12 bg-white px-6 py-3.5 text-base font-semibold text-ink"

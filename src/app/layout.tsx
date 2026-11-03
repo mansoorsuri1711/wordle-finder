@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import { Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Header from "@/components/Header";
@@ -19,28 +18,19 @@ import {
   TWITTER_IMAGE,
 } from "@/lib/siteConfig";
 
-const gulkave = localFont({
-  src: [
-    {
-      path: "../fonts/Gulkave-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Gulkave-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-gulkave",
-  display: "swap",
-  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
-});
-
-const outfit = Outfit({
+const syne = Syne({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-outfit",
+  variable: "--font-syne",
+  weight: ["500", "600", "700", "800"],
+  adjustFontFallback: true,
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700"],
   adjustFontFallback: true,
 });
 
@@ -49,7 +39,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: "#F3F7F6",
+  themeColor: "#F6F3FF",
   viewportFit: "cover",
   interactiveWidget: "resizes-visual",
 };
@@ -57,23 +47,23 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
   title: {
-    default: "Wordle Calculator — Free Helper & Next-Guess Ranker",
+    default: "Wordle Finder — Free Solver, Helper & Next-Guess Ranker",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_TAGLINE,
   keywords: [
-    "wordle calculator",
-    "wordle solver",
-    "wordle helper",
-    "wordle help",
     "wordle finder",
     "wordle word finder",
     "wordle answer finder",
+    "wordle solver",
+    "wordle helper",
+    "wordle help",
     "wordle guesser",
     "5 letter words for wordle",
     "5 letter wordle solver",
     "wordle tips",
     "best wordle starting words",
+    "wordle hard mode",
   ],
   authors: [{ name: `${SITE_NAME} Team` }],
   creator: SITE_NAME,
@@ -106,7 +96,7 @@ export const metadata: Metadata = {
     languages: { "en-US": SITE_ORIGIN, en: SITE_ORIGIN },
   },
   openGraph: {
-    title: "Wordle Calculator — Free Helper & Next-Guess Ranker",
+    title: "Wordle Finder — Free Solver, Helper & Next-Guess Ranker",
     description: SITE_TAGLINE,
     url: SITE_ORIGIN,
     siteName: SITE_NAME,
@@ -117,26 +107,26 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Wordle Calculator on wordlecalculator.net",
+        alt: "Wordle Finder on wordlefinder.app",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wordle Calculator — Free Helper & Next-Guess Ranker",
+    title: "Wordle Finder — Free Solver, Helper & Next-Guess Ranker",
     description: SITE_TAGLINE,
     images: [
       {
         url: TWITTER_IMAGE,
         width: 1200,
         height: 600,
-        alt: "Wordle Calculator on wordlecalculator.net",
+        alt: "Wordle Finder on wordlefinder.app",
       },
     ],
   },
   applicationName: SITE_NAME,
   category: "Games",
-  classification: "Wordle Calculator",
+  classification: "Wordle Finder",
 };
 
 export default function RootLayout({
@@ -148,17 +138,17 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${gulkave.variable} ${outfit.variable}`}
-      style={{ backgroundColor: "#F3F7F6", colorScheme: "light" }}
+      className={`${syne.variable} ${jakarta.variable}`}
+      style={{ backgroundColor: "#F6F3FF", colorScheme: "light" }}
     >
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="theme-color" content="#F3F7F6" />
+        <meta name="theme-color" content="#F6F3FF" />
         <style
           dangerouslySetInnerHTML={{
             __html:
-              "html,body{background-color:#F3F7F6!important;color-scheme:light}#__next,main{background-color:transparent}",
+              "html,body{background-color:#F6F3FF!important;color-scheme:light}#__next,main{background-color:transparent}",
           }}
         />
         <link rel="icon" href={`/favicon.ico?v=${ASSET_VERSION}`} type="image/x-icon" sizes="48x48" />
@@ -175,7 +165,7 @@ export default function RootLayout({
       </head>
       <body
         className="font-sans antialiased text-ink min-h-screen flex flex-col bg-brand site-atmosphere"
-        style={{ backgroundColor: "#F3F7F6" }}
+        style={{ backgroundColor: "#F6F3FF" }}
         suppressHydrationWarning
       >
         <MobileMenuProvider>

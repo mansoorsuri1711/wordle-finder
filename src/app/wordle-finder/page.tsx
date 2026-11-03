@@ -14,24 +14,24 @@ import {
 } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Wordle Finder — Word Finder & Answer Finder for 5 Letters",
+  title: "Wordle Word Finder & Answer Finder for 5 Letters",
   description:
-    "Free Wordle finder and Wordle answer finder. Search five-letter words that match green, yellow, and gray clues—better than a generic word finder.",
+    "Free Wordle word finder and answer finder. Search five-letter words that match green, yellow, and gray clues—better than a generic unscrambler.",
   alternates: { canonical: `${SITE_ORIGIN}/wordle-finder` },
   openGraph: {
-    title: "Wordle Finder — Word Finder & Answer Finder",
+    title: "Wordle Word Finder & Answer Finder",
     description: "Position-aware Wordle word finder for green, yellow, and gray tiles.",
     url: `${SITE_ORIGIN}/wordle-finder`,
     siteName: SITE_NAME,
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Wordle Finder" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Wordle word finder" }],
   },
 };
 
 const faqs = [
   {
-    question: "What is a Wordle finder?",
+    question: "What is a Wordle word finder?",
     answer:
-      "A Wordle finder (also searched as Wordle word finder or Wordle answer finder) returns five-letter words that match your board colors. Unlike a generic word finder, it locks green positions and bans yellow spots.",
+      "A Wordle word finder (also searched as Wordle answer finder) returns five-letter words that match your board colors. Unlike a generic word finder, it locks green positions and bans yellow spots.",
   },
   {
     question: "How is a Wordle word finder different from unscrambling letters?",
@@ -53,7 +53,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "Wordle Finder",
+      name: "Word finder",
       item: `${SITE_ORIGIN}/wordle-finder`,
     },
   ],
@@ -69,26 +69,28 @@ export default function WordleFinderPage() {
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Wordle Finder", href: "/wordle-finder" },
+          { label: "Word finder", href: "/wordle-finder" },
         ]}
       />
 
       <div className="container mx-auto max-w-6xl px-4 pb-12 pt-6">
         <div className="mb-8 grid items-center gap-8 lg:grid-cols-2">
           <div>
-            <h1 className="font-display text-4xl font-bold text-ink md:text-5xl">Wordle Finder</h1>
+            <h1 className="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
+              Wordle word finder & answer finder
+            </h1>
             <p className="mt-4 text-lg text-ink/75">
-              Use this Wordle finder as a Wordle word finder and Wordle answer finder: enter known
-              letters and colors, then browse five-letter matches ranked for your next guess. Prefer
-              the calculator framing? Open the{" "}
+              Search five-letter matches from green, yellow, and gray clues—then pick a ranked next
+              guess. This page focuses on word-finder and answer-finder intent; the full branded
+              toolkit lives on the{" "}
               <Link href="/" className="font-semibold text-teal-deep underline">
-                Wordle Calculator
+                Wordle Finder homepage
               </Link>
               .
             </p>
             <div className="mt-6">
               <CtaButton href="#finder" size="sm">
-                OPEN FINDER
+                OPEN WORD FINDER
               </CtaButton>
             </div>
           </div>
@@ -141,7 +143,7 @@ export default function WordleFinderPage() {
         </section>
 
         <section className="mt-14">
-          <FaqSection title="Wordle Finder FAQs" items={faqs} />
+          <FaqSection title="Wordle word finder FAQs" items={faqs} />
         </section>
       </div>
     </>

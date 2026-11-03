@@ -21,13 +21,13 @@ export default function Footer() {
           <div>
             <h2 className="mb-4 text-lg font-semibold text-ink">Tools</h2>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="text-ink/70 hover:text-ink hover:underline">Wordle Calculator</Link></li>
+              <li><Link href="/" className="text-ink/70 hover:text-ink hover:underline">Wordle Finder</Link></li>
               <li><Link href="/wordle-solver" className="text-ink/70 hover:text-ink hover:underline">Wordle Solver</Link></li>
               <li><Link href="/wordle-helper" className="text-ink/70 hover:text-ink hover:underline">Wordle Helper</Link></li>
-              <li><Link href="/wordle-finder" className="text-ink/70 hover:text-ink hover:underline">Wordle Finder</Link></li>
+              <li><Link href="/wordle-finder" className="text-ink/70 hover:text-ink hover:underline">Word finder & answers</Link></li>
               <li><Link href="/5-letter-words-for-wordle" className="text-ink/70 hover:text-ink hover:underline">5 letter words for Wordle</Link></li>
               <li><Link href="/best-wordle-starting-words" className="text-ink/70 hover:text-ink hover:underline">Best starting words</Link></li>
-              <li><Link href="/how-to-use-wordle-calculator" className="text-ink/70 hover:text-ink hover:underline">How to use</Link></li>
+              <li><Link href="/how-to-use-wordle-finder" className="text-ink/70 hover:text-ink hover:underline">How to use</Link></li>
               <li><Link href="/features" className="text-ink/70 hover:text-ink hover:underline">Features</Link></li>
             </ul>
           </div>
@@ -52,12 +52,12 @@ export default function Footer() {
               Filter today&apos;s clues and rank the strongest next guess—free in your browser.
             </p>
             <CtaButton
-              href="/#calculator"
+              href="/#finder"
               size="sm"
-              ariaLabel="Open the free Wordle Calculator"
+              ariaLabel="Open the free Wordle Finder"
               icon="arrow"
             >
-              OPEN CALCULATOR
+              OPEN FINDER
             </CtaButton>
           </div>
         </div>

@@ -5,13 +5,13 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { BRAND_FEATURE_2, SITE_NAME, SITE_ORIGIN } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Features — Wordle Calculator Tools",
+  title: "Features — Wordle Finder Tools",
   description:
-    "Wordle Calculator features: green/yellow/gray filtering, next-guess ranking, hard mode, uncommon guesses, starting-word insights, and free strategy guides.",
+    "Wordle Finder features: green/yellow/gray filtering, next-guess ranking, hard mode, uncommon guesses, starting-word insights, and free strategy guides.",
   alternates: { canonical: `${SITE_ORIGIN}/features` },
   openGraph: {
-    title: "Features — Wordle Calculator Tools",
-    description: "Everything included in the free Wordle Calculator toolkit.",
+    title: "Features — Wordle Finder Tools",
+    description: "Everything included in the free Wordle Finder toolkit.",
     url: `${SITE_ORIGIN}/features`,
     siteName: SITE_NAME,
     type: "website",
@@ -40,8 +40,8 @@ const features = [
     text: "See data-friendly openers and letter-frequency tables before your first guess.",
   },
   {
-    title: "Solver + calculator routes",
-    text: "Use the homepage calculator or the dedicated Wordle Solver page—same engine, clear intents.",
+    title: "Finder, solver, and helper routes",
+    text: "Use the homepage Wordle Finder or the dedicated solver and helper pages—same engine, clear intents.",
   },
   {
     title: "SERP-driven strategy guides",
@@ -49,7 +49,7 @@ const features = [
   },
   {
     title: "Free in the browser",
-    text: "No account, no install, no paywall for the core Wordle Calculator on wordlecalculator.net.",
+    text: "No account, no install, no paywall for the core Wordle Finder on wordlefinder.app.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function FeaturesPage() {
         ]}
       />
       <div className="container mx-auto max-w-5xl px-4 pb-12 pt-8">
-        <h1 className="font-display text-4xl font-bold text-ink">Wordle Calculator features</h1>
+        <h1 className="font-display text-5xl font-bold tracking-tight text-ink">Wordle Finder features</h1>
         <p className="mt-3 max-w-3xl text-lg text-ink/75">
           Built for mid-puzzle decisions: filter the board accurately, rank high-value guesses, and
           learn the strategy behind stronger openers.
@@ -72,7 +72,7 @@ export default function FeaturesPage() {
         <div className="mt-8 overflow-hidden rounded-2xl border border-ink/10">
           <Image
             src={BRAND_FEATURE_2}
-            alt="Wordle Calculator features including clue filters and ranked guesses"
+            alt="Wordle Finder features including clue filters and ranked guesses"
             width={1600}
             height={900}
             priority
@@ -95,11 +95,11 @@ export default function FeaturesPage() {
 
         <p className="mt-8 text-ink/70">
           Ready to try it? Open the{" "}
-          <Link href="/#calculator" className="font-semibold text-teal-deep underline">
-            Wordle Calculator
+          <Link href="/#finder" className="font-semibold text-teal-deep underline">
+            Wordle Finder
           </Link>{" "}
           or follow{" "}
-          <Link href="/how-to-use-wordle-calculator" className="font-semibold text-teal-deep underline">
+          <Link href="/how-to-use-wordle-finder" className="font-semibold text-teal-deep underline">
             how to use it
           </Link>
           .

@@ -12,13 +12,13 @@ import {
 } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Blog — Wordle Calculator Guides",
+  title: "Blog — Wordle Finder Guides",
   description:
-    "SERP-driven Wordle guides: strategy tips, how colors work, hard mode, and best second guesses—written for players who use a Wordle Calculator.",
+    "Wordle Finder guides people search for: strategy tips, green/yellow/gray rules, hard mode, and best second guesses. No filler posts.",
   alternates: { canonical: `${SITE_ORIGIN}/blog` },
   openGraph: {
-    title: "Blog — Wordle Calculator Guides",
-    description: "Practical Wordle articles people actually search for.",
+    title: "Blog — Wordle Finder Guides",
+    description: "Practical Wordle articles matched to live search demand.",
     url: `${SITE_ORIGIN}/blog`,
     siteName: SITE_NAME,
     type: "website",
@@ -34,13 +34,13 @@ const posts = [
     date: "November 2026",
     read: "10 min",
     image: BRAND_HERO,
-    alt: "Wordle strategy tips with calculator-ranked guesses",
+    alt: "Wordle strategy tips with Wordle Finder ranked guesses",
   },
   {
     href: "/blog/how-wordle-colors-work",
     title: "How Wordle Colors Work: Green, Yellow, and Gray Rules",
     excerpt:
-      "Exact tile meanings, double-letter traps, and how to enter colors correctly in a Wordle Calculator.",
+      "Exact tile meanings, double-letter traps, and how to enter colors correctly in Wordle Finder.",
     date: "November 2026",
     read: "8 min",
     image: BRAND_FEATURE_3,
@@ -48,7 +48,7 @@ const posts = [
   },
   {
     href: "/blog/wordle-hard-mode-guide",
-    title: "Wordle Hard Mode Guide: Rules, Tips, and Calculator Use",
+    title: "Wordle Hard Mode Guide: Rules, Tips, and Finder Use",
     excerpt:
       "What hard mode forces you to reuse, why streaks get harder, and how to keep suggestions legal.",
     date: "November 2026",
@@ -73,12 +73,12 @@ export default function BlogPage() {
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }]} />
       <div className="container mx-auto max-w-5xl px-4 pb-10 pt-8">
-        <h1 className="mb-3 font-display text-3xl font-bold text-ink md:text-4xl">
-          Wordle Calculator blog
+        <h1 className="mb-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
+          Wordle Finder blog
         </h1>
         <p className="mb-10 text-lg text-ink/80">
-          Only topics people search alongside Wordle helpers: strategy, tile colors, hard mode, and
-          second guesses. No filler posts.
+          Only topics people search alongside Wordle finders and solvers: strategy, tile colors, hard
+          mode, and second guesses. No filler posts.
         </p>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {posts.map((post) => (
