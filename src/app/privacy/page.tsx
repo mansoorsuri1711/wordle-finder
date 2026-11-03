@@ -18,14 +18,14 @@ export default function PrivacyPage() {
           <p>Last updated: November 3, 2026</p>
           <p>
             {SITE_NAME} (“we”) operates {SITE_DOMAIN}. This policy explains what information we
-            handle when you use the salary to hourly calculator and the rest of the site.
+            handle when you use the Wordle Calculator and the rest of the site.
           </p>
           <h2 className="font-display text-xl font-semibold text-ink">Information we collect</h2>
           <p>
-            Pay amounts you enter into the calculator are processed in your browser to show results;
-            we do not create user accounts for those inputs. If you contact us, we receive the email
-            address and message you send. Server logs or analytics may include IP address, browser
-            type, and pages visited.
+            Letter clues you enter into the calculator are processed in your browser to show
+            matching words; we do not create user accounts for those inputs. If you contact us, we
+            receive the email address and message you send. Server logs or analytics may include IP
+            address, browser type, and pages visited.
           </p>
           <h2 className="font-display text-xl font-semibold text-ink">How we use information</h2>
           <p>
@@ -40,12 +40,13 @@ export default function PrivacyPage() {
           <h2 className="font-display text-xl font-semibold text-ink">Third parties</h2>
           <p>
             Hosting and infrastructure providers may process technical data needed to deliver the
-            site. We do not use your calculator inputs to build marketing profiles.
+            site. We are not affiliated with the New York Times or official Wordle products.
           </p>
           <h2 className="font-display text-xl font-semibold text-ink">Your choices</h2>
           <p>
-            You can browse without contacting us. To request deletion of a message you sent, email{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-violet-soft underline">
+            You can browse without contacting us. To request deletion of a support email thread,
+            write to{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-teal underline">
               {CONTACT_EMAIL}
             </a>
             .
@@ -53,7 +54,7 @@ export default function PrivacyPage() {
           <h2 className="font-display text-xl font-semibold text-ink">Contact</h2>
           <p>
             Privacy questions:{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-violet-soft underline">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-teal underline">
               {CONTACT_EMAIL}
             </a>
             .

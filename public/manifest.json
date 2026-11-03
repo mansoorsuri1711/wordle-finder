@@ -1,31 +1,31 @@
 {
-  "name": "Salary to Hourly Calculator",
-  "short_name": "Salary to Hourly",
-  "description": "Free salary to hourly calculator — convert annual, monthly, or weekly pay into an hourly rate with custom hours per week.",
+  "name": "Wordle Calculator",
+  "short_name": "Wordle Calc",
+  "description": "Free Wordle Calculator — enter green, yellow, and gray clues to rank the best next five-letter guesses instantly.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F6F6FF",
-  "theme_color": "#6366F1",
+  "background_color": "#F3F7F6",
+  "theme_color": "#0D9488",
   "lang": "en-US",
   "icons": [
     {
-      "src": "/favicon.ico?v=20261103-sth1",
+      "src": "/favicon.ico?v=20261103-wc1",
       "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "/android-chrome-192x192.png?v=20261103-sth1",
+      "src": "/android-chrome-192x192.png?v=20261103-wc1",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png?v=20261103-sth1",
+      "src": "/android-chrome-512x512.png?v=20261103-wc1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/android-chrome-512x512.png?v=20261103-sth1",
+      "src": "/android-chrome-512x512.png?v=20261103-wc1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

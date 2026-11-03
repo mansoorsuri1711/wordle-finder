@@ -22,10 +22,13 @@ const navSections: NavSection[] = [
   {
     title: 'TOOLS',
     items: [
-      { href: '/', label: 'Salary to hourly calculator' },
-      { href: '/hourly-to-salary-calculator', label: 'Hourly to salary' },
-      { href: '/salary-conversion-chart', label: 'Conversion chart' },
-      { href: '/how-to-convert-salary-to-hourly', label: 'How to convert' },
+      { href: '/', label: 'Wordle Calculator' },
+      { href: '/wordle-solver', label: 'Wordle Solver' },
+      { href: '/wordle-helper', label: 'Wordle Helper' },
+      { href: '/wordle-finder', label: 'Wordle Finder' },
+      { href: '/5-letter-words-for-wordle', label: '5 letter words' },
+      { href: '/best-wordle-starting-words', label: 'Best starting words' },
+      { href: '/how-to-use-wordle-calculator', label: 'How to use' },
       { href: '/features', label: 'Features' },
     ],
   },
@@ -86,112 +89,74 @@ export default function MobileNavigation() {
     if (!isOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsOpen(false);
-    };
-    window.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = prev;
-      window.removeEventListener('keydown', onKey);
     };
-  }, [isOpen, setIsOpen]);
+  }, [isOpen]);
 
-  const closeMenu = () => setIsOpen(false);
-
-  const panel =
-    mounted && isOpen
-      ? createPortal(
-          <div
-            id="mobile-nav-panel"
-            className="fixed inset-0 z-[100] flex flex-col bg-white xl:hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation"
+  const panel = isOpen && mounted ? (
+    <div
+      id="mobile-nav-panel"
+      className="fixed inset-0 z-50 xl:hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile navigation"
+    >
+      <button
+        type="button"
+        className="absolute inset-0 bg-ink/40"
+        aria-label="Close menu overlay"
+        onClick={() => setIsOpen(false)}
+      />
+      <div className="absolute inset-y-0 right-0 flex w-[min(100%,22rem)] flex-col bg-white shadow-2xl">
+        <div className="flex items-center justify-between border-b border-ink/10 px-4 py-3">
+          <div className="flex items-center gap-2">
+            <Image src={BRAND_LOGO_MARK} alt="" width={32} height={32} className="rounded-lg" />
+            <span className="font-display text-sm font-bold text-ink">{SITE_SHORT_NAME}</span>
+          </div>
+          <MenuButton isOpen onClick={() => setIsOpen(false)} />
+        </div>
+        <nav className="flex-1 overflow-y-auto px-4 py-4">
+          {navSections.map((section) => (
+            <div key={section.title} className="mb-6">
+              <p className="mb-2 text-xs font-semibold tracking-[0.16em] text-ink/45">{section.title}</p>
+              <ul className="space-y-1">
+                {section.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`block rounded-xl px-3 py-2.5 text-sm font-medium ${
+                        isActive(item.href)
+                          ? 'bg-teal/10 text-teal-deep'
+                          : 'text-ink/75 hover:bg-ink/5'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+        <div className="border-t border-ink/10 p-4">
+          <Link
+            href="/#calculator"
+            onClick={() => setIsOpen(false)}
+            className="flex w-full items-center justify-center rounded-xl bg-teal px-4 py-3 text-sm font-semibold text-white"
           >
-            <div className="flex items-center justify-between border-b border-ink/10 bg-white px-4 py-3">
-              <Link href="/" className="flex min-w-0 items-center gap-2.5" onClick={closeMenu}>
-                <div className="relative h-8 w-8 flex-shrink-0 overflow-hidden rounded-md">
-                  <Image
-                    src={BRAND_LOGO_MARK}
-                    alt=""
-                    fill
-                    sizes="32px"
-                    className="object-contain"
-                  />
-                </div>
-                <span className="truncate text-base font-bold text-ink">{SITE_SHORT_NAME}</span>
-              </Link>
-              <button
-                type="button"
-                onClick={closeMenu}
-                className="flex h-10 w-10 items-center justify-center rounded-md text-ink hover:bg-ink/5"
-                aria-label="Close menu"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            <nav className="flex-1 overflow-y-auto px-3 py-4">
-              {navSections.map((section) => (
-                <div key={section.title} className="mb-5">
-                  <p className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-soft">
-                    {section.title}
-                  </p>
-                  <ul className="space-y-1">
-                    {section.items.map((item) => {
-                      const active = isActive(item.href);
-                      return (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            onClick={closeMenu}
-                            className={`flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium transition-colors ${
-                              active
-                                ? 'bg-violet/10 font-semibold text-violet-deep'
-                                : 'text-ink/80 hover:bg-ink/5'
-                            }`}
-                          >
-                            <span>{item.label}</span>
-                            <span className="text-emerald" aria-hidden="true">
-                              ›
-                            </span>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-            </nav>
-
-            <div className="border-t border-ink/10 bg-[#F7F8FC] px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-              <Link
-                href="/#calculator"
-                onClick={closeMenu}
-                className="flex w-full items-center justify-center rounded-lg bg-violet px-4 py-3 text-sm font-bold text-white"
-              >
-                Open calculator
-              </Link>
-            </div>
-          </div>,
-          document.body
-        )
-      : null;
-
-  if (!mounted) {
-    return (
-      <div className="xl:hidden">
-        <MenuButton onClick={() => {}} />
+            Open calculator
+          </Link>
+        </div>
       </div>
-    );
-  }
+    </div>
+  ) : null;
 
   return (
-    <div className="xl:hidden">
-      <MenuButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
-      {panel}
-    </div>
+    <>
+      <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+      {mounted && panel ? createPortal(panel, document.body) : null}
+    </>
   );
 }

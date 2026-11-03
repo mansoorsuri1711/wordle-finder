@@ -23,13 +23,13 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     images: [
       {
         loc: imageLoc("/logo-icon.png"),
-        title: "Salary to Hourly Calculator logo",
-        caption: "Brand mark for salarytohourlycalculator.io",
+        title: "Wordle Calculator logo",
+        caption: "Brand mark for wordlecalculator.net",
       },
       {
-        loc: imageLoc("/salary-to-hourly-calculator.webp"),
-        title: "Salary to hourly calculator",
-        caption: "Convert salary to an hourly rate online",
+        loc: imageLoc("/wordle-calculator.webp"),
+        title: "Wordle Calculator",
+        caption: "Rank the best next five-letter guess online",
       },
     ],
   },
@@ -40,48 +40,87 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-online.webp"),
-        title: "Salary calculator features",
-        caption: "Custom hours, weeks, and pay frequencies",
+        loc: imageLoc("/wordle-calculator-online.webp"),
+        title: "Wordle Calculator features",
+        caption: "Clue filtering, ranking, and hard mode",
       },
     ],
   },
   {
-    path: "/how-to-convert-salary-to-hourly",
+    path: "/how-to-use-wordle-calculator",
     lastMod: LASTMOD,
     changeFreq: "weekly",
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-tool.webp"),
-        title: "How to convert salary to hourly",
-        caption: "Step-by-step salary to hourly formula guide",
+        loc: imageLoc("/wordle-calculator-tool.webp"),
+        title: "How to use Wordle Calculator",
+        caption: "Step-by-step green yellow gray clue guide",
       },
     ],
   },
   {
-    path: "/hourly-to-salary-calculator",
+    path: "/wordle-solver",
     lastMod: LASTMOD,
     changeFreq: "weekly",
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-online.webp"),
-        title: "Hourly to salary calculator",
-        caption: "Convert hourly wage to annual salary",
+        loc: imageLoc("/wordle-calculator.webp"),
+        title: "Wordle Solver",
+        caption: "Filter Wordle answers from your board",
       },
     ],
   },
   {
-    path: "/salary-conversion-chart",
+    path: "/wordle-helper",
     lastMod: LASTMOD,
     changeFreq: "weekly",
     priority: 0.95,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-app.webp"),
-        title: "Salary conversion chart",
-        caption: "Popular annual salary to hourly rate table",
+        loc: imageLoc("/wordle-calculator-tool.webp"),
+        title: "Wordle Helper",
+        caption: "Get Wordle help narrowing remaining guesses",
+      },
+    ],
+  },
+  {
+    path: "/wordle-finder",
+    lastMod: LASTMOD,
+    changeFreq: "weekly",
+    priority: 0.95,
+    images: [
+      {
+        loc: imageLoc("/wordle-calculator-online.webp"),
+        title: "Wordle Finder",
+        caption: "Wordle word finder and answer finder",
+      },
+    ],
+  },
+  {
+    path: "/5-letter-words-for-wordle",
+    lastMod: LASTMOD,
+    changeFreq: "weekly",
+    priority: 0.95,
+    images: [
+      {
+        loc: imageLoc("/wordle-calculator-app.webp"),
+        title: "5 letter words for Wordle",
+        caption: "Five-letter Wordle word lists and solver",
+      },
+    ],
+  },
+  {
+    path: "/best-wordle-starting-words",
+    lastMod: LASTMOD,
+    changeFreq: "weekly",
+    priority: 0.95,
+    images: [
+      {
+        loc: imageLoc("/wordle-calculator-app.webp"),
+        title: "Best Wordle starting words",
+        caption: "Data-backed openers for five-letter Wordle",
       },
     ],
   },
@@ -93,7 +132,7 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     images: [
       {
         loc: imageLoc("/logo-icon.png"),
-        title: "About Salary to Hourly Calculator",
+        title: "About Wordle Calculator",
         caption: "Logo on the About page",
       },
     ],
@@ -105,54 +144,54 @@ export const SITEMAP_PAGES: SitemapPage[] = [
     priority: 0.8,
   },
   {
-    path: "/blog/salary-vs-hourly-pay",
+    path: "/blog/wordle-strategy-tips",
     lastMod: LASTMOD,
     changeFreq: "monthly",
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator.webp"),
-        title: "Salary vs hourly pay",
-        caption: "Compare salaried and hourly compensation",
+        loc: imageLoc("/wordle-calculator.webp"),
+        title: "Wordle strategy tips",
+        caption: "Practical tips to lower your Wordle average",
       },
     ],
   },
   {
-    path: "/blog/how-many-work-hours-in-a-year",
+    path: "/blog/how-wordle-colors-work",
     lastMod: LASTMOD,
     changeFreq: "monthly",
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-tool.webp"),
-        title: "How many work hours in a year",
-        caption: "2080-hour work year explained",
+        loc: imageLoc("/wordle-calculator-tool.webp"),
+        title: "How Wordle colors work",
+        caption: "Green yellow and gray tile rules explained",
       },
     ],
   },
   {
-    path: "/blog/monthly-salary-to-hourly",
+    path: "/blog/wordle-hard-mode-guide",
     lastMod: LASTMOD,
     changeFreq: "monthly",
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-online.webp"),
-        title: "Monthly salary to hourly",
-        caption: "Convert monthly pay to an hourly rate",
+        loc: imageLoc("/wordle-calculator-online.webp"),
+        title: "Wordle hard mode guide",
+        caption: "Hard mode rules and calculator tips",
       },
     ],
   },
   {
-    path: "/blog/part-time-salary-to-hourly",
+    path: "/blog/best-second-wordle-guesses",
     lastMod: LASTMOD,
     changeFreq: "monthly",
     priority: 0.9,
     images: [
       {
-        loc: imageLoc("/salary-to-hourly-calculator-app.webp"),
-        title: "Part-time salary to hourly",
-        caption: "Convert part-time salaries with custom hours",
+        loc: imageLoc("/wordle-calculator-app.webp"),
+        title: "Best second Wordle guesses",
+        caption: "Choose a stronger second guess after your opener",
       },
     ],
   },

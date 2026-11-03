@@ -6,13 +6,13 @@ import CtaButton from "@/components/CtaButton";
 import { BRAND_LOGO, CONTACT_EMAIL, SITE_DOMAIN, SITE_NAME, SITE_ORIGIN } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About Us — Salary to Hourly Calculator",
+  title: "About Us — Wordle Calculator",
   description:
-    "Learn about Salary to Hourly Calculator on salarytohourlycalculator.io: a free, focused tool for converting salary and hourly pay with honest gross-pay estimates.",
+    "About Wordle Calculator on wordlecalculator.net: a free browser tool that filters five-letter words from green, yellow, and gray clues and ranks stronger next guesses.",
   alternates: { canonical: `${SITE_ORIGIN}/about-us` },
   openGraph: {
-    title: "About Us — Salary to Hourly Calculator",
-    description: `Independent pay conversion toolkit at ${SITE_DOMAIN}.`,
+    title: "About Us — Wordle Calculator",
+    description: `Independent Wordle helper toolkit at ${SITE_DOMAIN}.`,
     url: `${SITE_ORIGIN}/about-us`,
     siteName: SITE_NAME,
     type: "website",
@@ -28,7 +28,7 @@ export default function AboutPage() {
           <div className="relative h-40 w-40 flex-shrink-0 overflow-hidden rounded-2xl border border-ink/10 bg-brand-soft">
             <Image
               src={BRAND_LOGO}
-              alt="Salary to Hourly Calculator logo"
+              alt="Wordle Calculator logo"
               fill
               sizes="160px"
               className="object-contain p-3"
@@ -41,69 +41,63 @@ export default function AboutPage() {
             </h1>
             <p className="text-lg leading-relaxed text-ink/80">
               We build one clear thing: a free{" "}
-              <strong className="text-ink">salary to hourly calculator</strong> with the schedule
-              controls people actually need. We operate at{" "}
+              <strong className="text-ink">Wordle Calculator</strong> that turns board colors into a
+              ranked shortlist of five-letter guesses. We operate at{" "}
               <strong className="text-ink">{SITE_DOMAIN}</strong>.
             </p>
           </div>
         </div>
 
-        <section className="mb-10 space-y-4 leading-relaxed text-ink/80">
-          <h2 className="font-display text-2xl font-semibold text-ink">Our mission</h2>
+        <div className="space-y-5 text-ink/80 leading-relaxed">
           <p>
-            Search results for pay conversion are crowded with thin widgets and bank product pages.
-            We combine an accurate converter with guides that answer real questions: the 2,080-hour
-            year, monthly-to-hourly math, part-time schedules, and salary versus hourly trade-offs.
+            Wordle is more fun when the mid-game does not feel like a coin flip. Our calculator
+            applies the same green, yellow, and gray constraints you see on the board, then ranks
+            remaining words by letter value so your next try teaches more.
           </p>
           <p>
-            Calculations run in your browser. We do not sell payroll software, promise take-home
-            figures, or bury the tool behind a signup wall.
+            We are not affiliated with the New York Times or the official Wordle game. This is an
+            independent helper for players who want clearer information—whether they are learning
+            strategy or protecting a streak.
           </p>
-        </section>
-
-        <section className="mb-10 space-y-4 leading-relaxed text-ink/80">
-          <h2 className="font-display text-2xl font-semibold text-ink">What we publish</h2>
+          <h2 className="font-display text-2xl font-bold text-ink">What we publish</h2>
           <ul className="list-disc space-y-2 pl-5">
             <li>
-              <Link href="/" className="text-violet-soft underline hover:no-underline">
-                Salary to hourly calculator
+              The live{" "}
+              <Link href="/" className="text-teal-deep underline">
+                Wordle Calculator
               </Link>{" "}
-              with bidirectional modes
-            </li>
-            <li>
-              <Link
-                href="/how-to-convert-salary-to-hourly"
-                className="text-violet-soft underline hover:no-underline"
-              >
-                How-to conversion guide
+              and{" "}
+              <Link href="/wordle-solver" className="text-teal-deep underline">
+                Wordle Solver
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="text-violet-soft underline hover:no-underline">
-                Educational blog posts
-              </Link>{" "}
-              tied to live search demand
+              Guides on{" "}
+              <Link href="/best-wordle-starting-words" className="text-teal-deep underline">
+                starting words
+              </Link>
+              , strategy, hard mode, and color rules
             </li>
+            <li>Honest FAQs about solvers, spoiler boundaries, and hard-mode play</li>
           </ul>
-        </section>
-
-        <section className="mb-10 space-y-4 leading-relaxed text-ink/80">
-          <h2 className="font-display text-2xl font-semibold text-ink">Contact</h2>
+          <h2 className="font-display text-2xl font-bold text-ink">Contact</h2>
           <p>
             Questions or corrections? Email{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-violet-soft underline hover:no-underline">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-teal-deep underline">
               {CONTACT_EMAIL}
             </a>{" "}
-            or use our{" "}
-            <Link href="/contact-us" className="text-violet-soft underline hover:no-underline">
-              contact form
+            or use the{" "}
+            <Link href="/contact-us" className="text-teal-deep underline">
+              contact page
             </Link>
             .
           </p>
-          <CtaButton href="/#calculator" ariaLabel="Open the salary to hourly calculator">
-            Open calculator
-          </CtaButton>
-        </section>
+          <div className="pt-2">
+            <CtaButton href="/#calculator" size="sm">
+              OPEN CALCULATOR
+            </CtaButton>
+          </div>
+        </div>
       </div>
     </>
   );

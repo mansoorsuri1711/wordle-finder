@@ -5,13 +5,13 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { BRAND_FEATURE_2, SITE_NAME, SITE_ORIGIN } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Features — Salary to Hourly Calculator Tools",
+  title: "Features — Wordle Calculator Tools",
   description:
-    "Explore Salary to Hourly Calculator features: bidirectional conversion, custom hours and weeks, pay-frequency breakdowns, charts, and free educational guides.",
+    "Wordle Calculator features: green/yellow/gray filtering, next-guess ranking, hard mode, uncommon guesses, starting-word insights, and free strategy guides.",
   alternates: { canonical: `${SITE_ORIGIN}/features` },
   openGraph: {
-    title: "Features — Salary to Hourly Calculator Tools",
-    description: "Everything included in our free pay conversion toolkit.",
+    title: "Features — Wordle Calculator Tools",
+    description: "Everything included in the free Wordle Calculator toolkit.",
     url: `${SITE_ORIGIN}/features`,
     siteName: SITE_NAME,
     type: "website",
@@ -20,88 +20,90 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    title: "Salary → hourly and hourly → salary",
-    text: "Switch directions in one interface so offer letters and job-board rates share the same math.",
+    title: "Green, yellow, and gray clue inputs",
+    text: "Model your exact board: locked greens, yellows with banned positions, and eliminated grays.",
   },
   {
-    title: "Custom hours, weeks, and days",
-    text: "Model part-time weeks, unpaid leave, and different daily lengths instead of locking to 40×52.",
+    title: "Ranked next-guess suggestions",
+    text: "Remaining words are scored by letter frequency and position strength—not dumped alphabetically.",
   },
   {
-    title: "Full pay-frequency breakdown",
-    text: "See hourly, daily, weekly, biweekly, semi-monthly, monthly, and annual totals together.",
+    title: "Hard mode toggle",
+    text: "Keep suggestions legal when Wordle requires you to reuse every revealed clue.",
   },
   {
-    title: "Conversion chart",
-    text: "Scan popular annual salaries and their hourly equivalents without retyping every number.",
+    title: "Answer bank + uncommon guesses",
+    text: "Stay on likely answers for clean finishes, or expand the dictionary for information probes.",
   },
   {
-    title: "Educational guides",
-    text: "Formula walkthroughs, 2080-hour explainers, and salary vs hourly comparisons that rank with real search intent.",
+    title: "Starting-word insights",
+    text: "See data-friendly openers and letter-frequency tables before your first guess.",
   },
   {
-    title: "Private browser math",
-    text: "Calculations run on your device. No account wall for the core converter.",
+    title: "Solver + calculator routes",
+    text: "Use the homepage calculator or the dedicated Wordle Solver page—same engine, clear intents.",
+  },
+  {
+    title: "SERP-driven strategy guides",
+    text: "Color rules, hard mode, second guesses, and strategy tips that match what players search.",
+  },
+  {
+    title: "Free in the browser",
+    text: "No account, no install, no paywall for the core Wordle Calculator on wordlecalculator.net.",
   },
 ];
 
 export default function FeaturesPage() {
   return (
     <>
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Features", href: "/features" }]} />
-      <div className="container mx-auto max-w-5xl px-4 pb-12 pt-6">
-        <h1 className="mb-4 font-display text-3xl font-bold text-ink md:text-4xl">
-          Salary to Hourly Calculator Features
-        </h1>
-        <p className="mb-10 max-w-3xl text-lg leading-relaxed text-ink/80">
-          {SITE_NAME} is a focused toolkit for pay conversion—not a generic finance portal. Every
-          feature below supports clearer job comparisons and schedule-aware rate math.
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Features", href: "/features" },
+        ]}
+      />
+      <div className="container mx-auto max-w-5xl px-4 pb-12 pt-8">
+        <h1 className="font-display text-4xl font-bold text-ink">Wordle Calculator features</h1>
+        <p className="mt-3 max-w-3xl text-lg text-ink/75">
+          Built for mid-puzzle decisions: filter the board accurately, rank high-value guesses, and
+          learn the strategy behind stronger openers.
         </p>
 
-        <div className="mb-12 grid gap-10 md:grid-cols-2 md:items-center">
-          <div className="relative aspect-video overflow-hidden rounded-2xl border border-ink/10">
-            <Image
-              src={BRAND_FEATURE_2}
-              alt="Salary to hourly calculator online features with schedule scenarios"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="space-y-4 leading-relaxed text-ink/80">
-            <p>
-              Start on the{" "}
-              <Link href="/" className="text-violet-soft underline hover:no-underline">
-                homepage calculator
-              </Link>
-              , flip to the{" "}
-              <Link
-                href="/hourly-to-salary-calculator"
-                className="text-violet-soft underline hover:no-underline"
-              >
-                hourly to salary tool
-              </Link>
-              , or open the{" "}
-              <Link
-                href="/salary-conversion-chart"
-                className="text-violet-soft underline hover:no-underline"
-              >
-                conversion chart
-              </Link>{" "}
-              when you need a printable reference.
-            </p>
-          </div>
+        <div className="mt-8 overflow-hidden rounded-2xl border border-ink/10">
+          <Image
+            src={BRAND_FEATURE_2}
+            alt="Wordle Calculator features including clue filters and ranked guesses"
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
+            className="h-auto w-full object-cover"
+          />
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {features.map((f) => (
-            <div key={f.title} className="rounded-2xl border border-ink/10 bg-white p-5">
-              <h2 className="font-display text-xl font-semibold text-ink">{f.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink/70">{f.text}</p>
-            </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {features.map((feature) => (
+            <article
+              key={feature.title}
+              className="rounded-2xl border border-ink/10 bg-white p-5 shadow-sm"
+            >
+              <h2 className="font-display text-xl font-bold text-ink">{feature.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink/70">{feature.text}</p>
+            </article>
           ))}
         </div>
+
+        <p className="mt-8 text-ink/70">
+          Ready to try it? Open the{" "}
+          <Link href="/#calculator" className="font-semibold text-teal-deep underline">
+            Wordle Calculator
+          </Link>{" "}
+          or follow{" "}
+          <Link href="/how-to-use-wordle-calculator" className="font-semibold text-teal-deep underline">
+            how to use it
+          </Link>
+          .
+        </p>
       </div>
     </>
   );

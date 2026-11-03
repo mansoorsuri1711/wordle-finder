@@ -1,23 +1,23 @@
-# Salary to Hourly Calculator
+# Wordle Calculator
 
-Free **salary to hourly calculator** for [salarytohourlycalculator.io](https://salarytohourlycalculator.io).
+Free Wordle Calculator for [wordlecalculator.net](https://wordlecalculator.net) — enter green, yellow, and gray clues to filter five-letter words and rank the best next guess.
 
-## Includes
+## Stack
 
-- Bidirectional salary ↔ hourly web calculator (custom hours/weeks)
-- Hourly to salary tool, conversion chart, and how-to guide
-- SERP blogs: salary vs hourly, 2080 work year, monthly → hourly, part-time conversion
-- Technical SEO: sitemap index, Content-Signal robots, FAQ/HowTo/SoftwareApplication
+- Next.js App Router + TypeScript
+- Tailwind CSS
+- Static SEO routes (sitemap index, robots Content-Signals)
 
-## Development
+## Develop
 
 ```bash
 npm install
 npm run dev
 ```
 
-## SEO
+## Build
 
-- Primary keyword: `salary to hourly calculator`
-- Canonical host: `https://salarytohourlycalculator.io`
-- Language: `en-US`
+```bash
+npm run build
+npm start
+```

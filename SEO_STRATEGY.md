@@ -1,18 +1,29 @@
-# SEO Strategy — Salary to Hourly Calculator
+# SEO Strategy — Wordle Calculator
 
-**Domain:** https://salarytohourlycalculator.io  
-**Primary keyword:** salary to hourly calculator  
-**Language:** en-US
+Primary domain: `https://wordlecalculator.net`  
+Primary keyword: **wordle calculator**
 
-| Intent | Keyword / topic | Route |
-|--------|-----------------|-------|
-| Tool (primary) | salary to hourly calculator | `/` |
-| Tool | hourly to salary calculator | `/hourly-to-salary-calculator` |
-| Tool | salary conversion chart | `/salary-conversion-chart` |
-| Guide | how to convert salary to hourly | `/how-to-convert-salary-to-hourly` |
-| Informational | salary vs hourly pay | `/blog/salary-vs-hourly-pay` |
-| Informational | how many work hours in a year / 2080 | `/blog/how-many-work-hours-in-a-year` |
-| Informational | monthly salary to hourly | `/blog/monthly-salary-to-hourly` |
-| Informational | part-time salary to hourly | `/blog/part-time-salary-to-hourly` |
+## SERP intents covered
 
-Sitemap: `https://salarytohourlycalculator.io/sitemap-index.xml`
+| Intent | Route |
+|--------|-------|
+| Wordle Calculator / helper | `/` |
+| Wordle Solver | `/wordle-solver` |
+| How to use | `/how-to-use-wordle-calculator` |
+| Best starting words | `/best-wordle-starting-words` |
+| Strategy tips | `/blog/wordle-strategy-tips` |
+| Color rules | `/blog/how-wordle-colors-work` |
+| Hard mode | `/blog/wordle-hard-mode-guide` |
+| Second guesses | `/blog/best-second-wordle-guesses` |
+
+## Differentiators vs typical SERP tools
+
+- Thorough homepage education (not tool-only thin pages)
+- Ranked suggestions (frequency + position), not unsorted dumps
+- Hard mode + uncommon-guess toggles
+- Custom trust pages + FAQ/HowTo/SoftwareApplication schema
+- Branded `og:site_name`, sitemap index, image sitemap
+
+## Blog rule
+
+Only publish posts that match live search demand for Wordle Calculator / Solver adjacent queries. No unrelated filler.

@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import FaqSection from "@/components/FaqSection";
-import SalaryToHourlyCalculator from "@/components/SalaryToHourlyCalculator";
+import WordleCalculator from "@/components/WordleCalculator";
+import CtaButton from "@/components/CtaButton";
 import { WEB_APPLICATION_JSON_LD } from "@/lib/appFacts";
 import { imageObjectLicensing } from "@/lib/schemaImageLicensing";
-import { annualToHourly, formatMoney } from "@/lib/salaryMath";
+import { bestOpeners, LETTER_FREQUENCY_RANK } from "@/lib/wordleMath";
 import {
   BRAND_FEATURE_2,
   BRAND_FEATURE_3,
@@ -19,16 +20,16 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    default: "Salary to Hourly Calculator — Free Pay Rate Converter",
+    default: "Wordle Calculator — Free Helper & Next-Guess Ranker",
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Free salary to hourly calculator. Convert annual, monthly, or weekly pay into an hourly wage with custom hours per week. Instant results, no signup.",
+    "Free Wordle Calculator. Enter green, yellow, and gray clues to filter five-letter words and rank the best next guess. Hard mode supported. No signup.",
   alternates: { canonical: SITE_ORIGIN },
   openGraph: {
-    title: "Salary to Hourly Calculator — Free Pay Rate Converter",
+    title: "Wordle Calculator — Free Helper & Next-Guess Ranker",
     description:
-      "Turn any salary into an hourly rate and see daily, weekly, biweekly, and monthly pay in seconds.",
+      "Turn your Wordle board into a short list of ranked answers. Green, yellow, and gray clues in—best next guess out.",
     url: SITE_ORIGIN,
     siteName: SITE_NAME,
     type: "website",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Salary to Hourly Calculator — convert salary to hourly rate online",
+        alt: "Wordle Calculator — rank the best next five-letter guess online",
       },
     ],
   },
@@ -46,735 +47,617 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "How do I calculate my hourly pay from my salary?",
+    question: "What is a Wordle Calculator?",
     answer:
-      "Divide your annual salary by the number of hours you work in a year. A common full-time assumption is 40 hours per week × 52 weeks = 2,080 hours. Example: $60,000 ÷ 2,080 = $28.85 per hour. Use our salary to hourly calculator above to adjust hours and weeks for your real schedule.",
+      "A Wordle Calculator is a clue filter and next-guess ranker. You enter green (correct spot), yellow (wrong spot), and gray (absent) letters from your board. It narrows the five-letter word list and sorts strong candidates so you can finish in fewer tries.",
   },
   {
-    question: "What is my hourly pay if my monthly salary is $6,500?",
+    question: "How do I use this Wordle Calculator?",
     answer:
-      "First annualize the monthly salary ($6,500 × 12 = $78,000), then divide by annual hours. At 40 hours × 52 weeks: $78,000 ÷ 2,080 ≈ $37.50 per hour. Change hours per week in the calculator if you work part time.",
+      "Type each green letter into its position slot, list yellow letters (add a position number to ban that slot), then add gray letters that are fully ruled out. The calculator updates the remaining words and highlights the strongest next guesses. See the full walkthrough on our how-to page.",
   },
   {
-    question: "Can I calculate my salary from my hourly pay?",
+    question: "What do green, yellow, and gray mean in Wordle?",
     answer:
-      "Yes. Switch to Hourly → Salary mode or open our hourly to salary calculator. Multiply hourly wage × hours per week × weeks per year. Example: $25 × 40 × 52 = $52,000 per year before taxes.",
+      "Green means the letter is in the answer and in that exact spot. Yellow means the letter is in the answer but not in that spot. Gray means the letter does not appear in the answer (unless you already know it appears elsewhere from a green or yellow tile).",
   },
   {
-    question: "Why do calculators use 2,080 hours?",
+    question: "Is using a Wordle Calculator cheating?",
     answer:
-      "2,080 is the standard U.S. full-time work year: 40 hours × 52 weeks. It does not subtract unpaid leave, holidays, or overtime. If you take two unpaid weeks, use 50 weeks instead (2,000 hours).",
+      "It is a personal choice. Searches for “Wordle cheat” usually mean the same helper tools. Many players use a calculator to learn letter patterns, recover a stuck board, or practice hard mode. Others prefer a fully unaided streak. Use it the way that keeps the puzzle fun for you.",
   },
   {
-    question: "Does this salary to hourly calculator include taxes?",
+    question: "How many Wordle answers are there?",
     answer:
-      "No. Results are gross pay estimates before income tax, FICA, benefits, or other deductions. Use them to compare offers and understand rate math—not as a paycheck preview.",
+      "The common answer bank used by helpers is about 2,300 five-letter words. Valid guesses can be a much larger set. Our default mode ranks likely answers; turn on uncommon guesses when you need a broader dictionary.",
   },
   {
-    question: "How do I convert a part-time salary to an hourly rate?",
+    question: "Does the Wordle Calculator support hard mode?",
     answer:
-      "Enter your salary and set hours per week to your actual average (for example 20 or 25). The calculator divides by your real annual hours so the hourly rate reflects part-time schedules accurately.",
+      "Yes. Enable hard mode in the tool so suggestions must reuse every green and yellow clue you already revealed—the same constraint Wordle applies when hard mode is on.",
   },
   {
-    question: "What is the difference between biweekly and semi-monthly pay?",
+    question: "What is the best Wordle starting word?",
     answer:
-      "Biweekly means every two weeks (26 pay periods per year). Semi-monthly means twice a month (24 pay periods). Our results show both so you can match your employer’s schedule.",
+      "Data-friendly openers emphasize common letters in strong positions. Words like SLATE, STARE, CRANE, and RAISE consistently cover high-frequency vowels and consonants. Compare options on our best starting words page.",
   },
   {
-    question: "Is this salary to hourly calculator free?",
+    question: "Can this tool find today’s Wordle answer?",
     answer:
-      "Yes. salarytohourlycalculator.io is free to use in your browser—no account, no download, and no paywall for the core converter.",
+      "It does not spoil the daily answer automatically. It calculates which words still fit the clues you enter. If you type every clue from today’s board, the remaining list becomes today’s possible answers—and often a single word.",
   },
   {
-    question: "How do I convert a weekly paycheck to an hourly rate?",
+    question: "Why aren’t all five-letter words suggested?",
     answer:
-      "Divide weekly pay by hours worked that week. Example: $1,500 ÷ 40 hours = $37.50 per hour. Enter weekly pay in the calculator and keep your real hours per week set correctly.",
+      "By default we prioritize the answer-style word bank Wordle players actually encounter, not every obscure dictionary entry. Enable uncommon guesses if you want a wider list of valid spellings.",
   },
   {
-    question: "How do I convert a daily wage to hourly?",
+    question: "Is Wordle Calculator free on wordlecalculator.net?",
     answer:
-      "Divide the day rate by hours in the workday. Example: $120 ÷ 8 hours = $15 per hour. Use the hours-per-day field so daily and hourly figures stay consistent.",
+      "Yes. The core Wordle Calculator runs free in your browser—no account, no download, and no paywall for clue filtering and ranked suggestions.",
+  },
+  {
+    question: "Does this work with the New York Times Wordle?",
+    answer:
+      "Yes. Enter the green, yellow, and gray tiles from the NYT Wordle board and the calculator filters five-letter candidates the same way. It is an unofficial helper—not affiliated with the New York Times.",
+  },
+  {
+    question: "Can I use the Wordle Calculator on mobile?",
+    answer:
+      "Yes. wordlecalculator.net is a responsive web tool. Open it in your phone browser, enter clues from today’s puzzle, and read the ranked shortlist without installing an app.",
+  },
+  {
+    question: "Does the calculator only list answers or also hints?",
+    answer:
+      "It ranks remaining words and highlights strong next guesses—so you get both a shortlist and a hint about which play gathers the most information. It does not auto-publish today’s official answer.",
   },
 ];
 
-const exampleRows = [40000, 50000, 60000, 75000, 80000, 100000].map((annual) => ({
-  annual,
-  hourly40: annualToHourly(annual, 40, 52),
-  hourly35: annualToHourly(annual, 35, 52),
-}));
+const openers = bestOpeners(10);
+const topLetters = LETTER_FREQUENCY_RANK.slice(0, 10);
 
-export default function Home() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${SITE_ORIGIN}/#website`,
-        url: `${SITE_ORIGIN}/`,
-        name: SITE_NAME,
-        description:
-          "Free salary to hourly calculator with custom hours per week and full pay-frequency breakdown.",
-        inLanguage: "en-US",
-        publisher: { "@id": `${SITE_ORIGIN}/#organization` },
-      },
-      {
-        "@type": "WebPage",
-        "@id": `${SITE_ORIGIN}/#webpage`,
-        url: `${SITE_ORIGIN}/`,
-        name: "Salary to Hourly Calculator — Free Pay Rate Converter",
-        isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
-        inLanguage: "en-US",
-        primaryImageOfPage: {
-          "@type": "ImageObject",
-          url: `${SITE_ORIGIN}${BRAND_HERO}`,
-          width: 1600,
-          height: 900,
-          ...imageObjectLicensing,
-        },
-      },
-      {
-        ...WEB_APPLICATION_JSON_LD,
-        "@id": `${SITE_ORIGIN}/#software`,
-        description:
-          "Web salary to hourly calculator that converts annual, monthly, weekly, or hourly pay across custom work schedules.",
-      },
-      {
-        "@type": "HowTo",
-        name: "How to convert salary to hourly with this calculator",
-        description: "Turn an annual or monthly salary into an hourly wage in four steps.",
-        inLanguage: "en-US",
-        step: [
-          {
-            "@type": "HowToStep",
-            name: "Enter your pay amount",
-            text: "Type your salary or wage and choose the matching pay period (annual, monthly, biweekly, weekly, or daily).",
-          },
-          {
-            "@type": "HowToStep",
-            name: "Set your work schedule",
-            text: "Adjust hours per week, weeks per year, and hours per day so the math matches your real job—not only a 40×52 default.",
-          },
-          {
-            "@type": "HowToStep",
-            name: "Read your hourly rate",
-            text: "See the equivalent hourly wage highlighted instantly, with daily through annual totals below it.",
-          },
-          {
-            "@type": "HowToStep",
-            name: "Compare the other direction",
-            text: "Switch to Hourly → Salary mode when you want to annualize an hourly offer for budgeting or negotiation.",
-          },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
-        })),
-      },
-    ],
-  };
+const howToSteps = [
+  {
+    title: "Capture green tiles",
+    body: "Put each correctly placed letter into the matching slot. Greens lock that position for every remaining candidate.",
+  },
+  {
+    title: "Add yellow clues",
+    body: "Enter letters that appear in the word but sit in the wrong spot. Add a position number (1–5) to ban that exact slot.",
+  },
+  {
+    title: "List gray letters",
+    body: "Add letters your guesses fully eliminated. The calculator keeps letters that are also green or yellow elsewhere.",
+  },
+  {
+    title: "Pick a ranked guess",
+    body: "Read the shortlist. Top results balance remaining answers with strong letter coverage so your next try teaches more.",
+  },
+];
 
+const featureCards = [
+  {
+    title: "Clue-accurate filtering",
+    body: "Greens, yellows with banned positions, and grays update the remaining word set in real time—the same logic strong solvers use.",
+  },
+  {
+    title: "Next-guess ranking",
+    body: "Candidates are scored by letter frequency and position strength so the first suggestions are usually the highest-value plays.",
+  },
+  {
+    title: "Hard mode ready",
+    body: "Toggle hard mode when Wordle requires you to reuse known clues. Suggestions stay legal for that stricter rule set.",
+  },
+  {
+    title: "Answer vs uncommon lists",
+    body: "Stay on the likely-answer bank for clean finishes, or expand to uncommon guesses when you need a probe word.",
+  },
+];
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_ORIGIN,
+  description:
+    "Free Wordle Calculator to filter five-letter words from green, yellow, and gray clues and rank the best next guess.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_ORIGIN}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to use the Wordle Calculator",
+  description:
+    "Enter Wordle tile colors to filter remaining five-letter answers and choose a strong next guess.",
+  step: howToSteps.map((step, index) => ({
+    "@type": "HowToStep",
+    position: index + 1,
+    name: step.title,
+    text: step.body,
+  })),
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  ...WEB_APPLICATION_JSON_LD,
+  description:
+    "Browser-based Wordle Calculator that filters five-letter words from tile clues and ranks next guesses.",
+  screenshot: {
+    "@type": "ImageObject",
+    url: `${SITE_ORIGIN}${BRAND_HERO}`,
+    width: 1600,
+    height: 900,
+    ...imageObjectLicensing,
+  },
+};
+
+export default function HomePage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <section id="calculator" className="relative overflow-hidden scroll-mt-16">
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="hero-glow absolute -left-20 top-0 h-56 w-56 rounded-full bg-violet/25 blur-3xl" />
-          <div
-            className="hero-glow absolute -right-10 top-16 h-64 w-64 rounded-full bg-emerald/15 blur-3xl"
-            style={{ animationDelay: "1.5s" }}
-          />
-        </div>
+      <section className="relative overflow-hidden px-4 pb-10 pt-8 sm:px-6 md:px-8 md:pb-14 md:pt-12">
+        <div className="pointer-events-none absolute -left-24 top-10 h-64 w-64 rounded-full bg-teal/15 blur-3xl hero-glow" />
+        <div className="pointer-events-none absolute -right-16 top-24 h-56 w-56 rounded-full bg-orange/15 blur-3xl hero-glow" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8">
-          <div className="mx-auto mb-8 max-w-3xl text-center lg:mx-0 lg:max-w-2xl lg:text-left">
-            <div className="mb-4 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-              <span className="trust-chip">Free · no signup</span>
-              <span className="trust-chip">Before taxes</span>
-              <span className="trust-chip">Works both ways</span>
-            </div>
-            <h1 className="mb-3 font-display text-[1.85rem] font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl">
-              <span className="brand-gradient-text">
-                Convert your salary into an hourly rate
-              </span>
+        <div className="container relative mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl animate-fade-up text-center">
+            <h1 className="font-display text-4xl font-bold leading-[1.08] text-ink sm:text-5xl md:text-[3.25rem]">
+              <span className="brand-gradient-text">Wordle Calculator</span>
             </h1>
-            <p className="mx-auto max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg lg:mx-0">
-              Instant pay breakdowns with custom hours and weeks—built for comparing job offers.
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-ink/75 sm:text-xl">
+              Enter green, yellow, and gray clues. Get a ranked shortlist of five-letter words and a
+              stronger next guess—free in your browser.
             </p>
-          </div>
-
-          <SalaryToHourlyCalculator />
-
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-            <span
-              className="trust-chip"
-              aria-label={`Rating ${SITE_RATING.ratingValue} out of 5`}
-            >
-              <span className="font-semibold text-gold">{SITE_RATING.ratingValue}</span>
-              <span className="tracking-tight text-gold" aria-hidden="true">
-                ★★★★★
-              </span>
-              <span>({Number(SITE_RATING.ratingCount).toLocaleString("en-US")})</span>
-            </span>
           </div>
         </div>
       </section>
 
-      <div className="container mx-auto max-w-6xl px-4 py-12">
-        <section className="mb-16 grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-              What a salary to hourly calculator actually answers
+      <section className="px-4 pb-12 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <WordleCalculator />
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+            <span className="trust-chip" aria-label={`${SITE_RATING.ratingValue} out of 5 stars`}>
+              <span className="font-semibold text-ink">{SITE_RATING.ratingValue}★</span>
+              <span>({Number(SITE_RATING.ratingCount).toLocaleString()} ratings)</span>
+            </span>
+            <span className="trust-chip">Free · Web · Puzzle helper</span>
+            <span className="trust-chip">Hard mode supported</span>
+          </div>
+          <div className="mx-auto mt-10 max-w-4xl animate-fade-up">
+            <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-[0_28px_70px_-40px_rgba(13,148,136,0.45)]">
+              <Image
+                src={BRAND_HERO}
+                alt="Wordle Calculator interface showing ranked five-letter word suggestions"
+                width={1600}
+                height={900}
+                priority
+                sizes="(max-width: 1024px) 100vw, 896px"
+                className="h-auto w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-8 max-w-3xl">
+            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+              How the Wordle Calculator works
             </h2>
-            <p className="mb-4 text-lg leading-relaxed text-ink/80">
-              A <strong className="text-ink">salary to hourly calculator</strong> turns a fixed
-              paycheck into a rate you can compare against hourly jobs, freelance quotes, and
-              overtime math. When someone offers $72,000 a year, the useful question is often: what
-              is that per hour of real work?
-            </p>
-            <p className="mb-4 leading-relaxed text-ink/75">
-              Most people reach for the classic 2,080-hour year. That works as a baseline, but your
-              week might be 37.5 hours, your unpaid leave might cut two weeks, or you might be
-              evaluating a 20-hour part-time role. This tool lets you change those inputs so the
-              hourly number reflects your schedule—not a generic spreadsheet default.
-            </p>
-            <p className="leading-relaxed text-ink/75">
-              Use it before accepting an offer, when switching from hourly to salaried work, or when
-              you want a quick sense of what your time is worth across daily, weekly, and monthly
-              views.
+            <p className="mt-3 text-lg text-ink/70">
+              Every tile color is a constraint. The calculator applies those constraints to a
+              five-letter answer bank, then ranks what is left so your next guess does more than
+              hope.
             </p>
           </div>
-          <div className="relative aspect-video overflow-hidden rounded-2xl border border-ink/10">
-            <Image
-              src={BRAND_HERO}
-              alt="Salary to hourly calculator showing annual salary converted to hourly rate with pay breakdown"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              quality={70}
-              className="object-cover"
-              priority
-            />
-          </div>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            How the salary to hourly formula works
-          </h2>
-          <p className="mb-6 max-w-3xl leading-relaxed text-ink/80">
-            The core formula is simple: <strong className="text-ink">hourly rate = annual
-            salary ÷ (hours per week × weeks per year)</strong>. Convert other pay periods to annual
-            first, then divide by your yearly hours—or enter them directly in the calculator above.
-          </p>
-
-          <div className="mb-6 rounded-xl border border-violet/20 bg-violet/5 p-5 sm:p-6">
-            <h3 className="mb-2 font-display text-lg font-semibold text-ink">
-              Calculator defaults (you can change them)
-            </h3>
-            <ul className="list-disc space-y-2 pl-5 text-ink/75">
-              <li>
-                <strong className="text-ink">40 hours per week</strong> as a standard full-time week
-              </li>
-              <li>
-                <strong className="text-ink">52 weeks per year</strong> for paid calendar weeks
-              </li>
-              <li>
-                <strong className="text-ink">A month = 1/12 of a year</strong> for monthly equivalents
-              </li>
-              <li>
-                Results are <strong className="text-ink">gross and tax-agnostic</strong>—time math,
-                not take-home pay
-              </li>
-            </ul>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {[
-              {
-                title: "Annual → hourly",
-                text: "$50,000 ÷ (40 × 52) = $50,000 ÷ 2,080 ≈ $24.04 per hour.",
-              },
-              {
-                title: "Monthly → hourly",
-                text: "($5,000 × 12) ÷ 2,080 = $60,000 ÷ 2,080 ≈ $28.85 per hour.",
-              },
-              {
-                title: "Weekly → hourly",
-                text: "$1,500 per week ÷ 40 hours = $37.50 per hour.",
-              },
-              {
-                title: "Daily → hourly",
-                text: "$120 per day ÷ 8 hours = $15.00 per hour.",
-              },
-            ].map((ex) => (
-              <div key={ex.title} className="rounded-xl border border-ink/10 bg-white p-5">
-                <h3 className="font-display text-lg font-semibold text-ink">{ex.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{ex.text}</p>
-              </div>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {howToSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className="rounded-2xl border border-ink/10 bg-white p-5 shadow-sm"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange-deep">
+                  Step {index + 1}
+                </p>
+                <h3 className="mt-2 font-display text-xl font-bold text-ink">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{step.body}</p>
+              </article>
             ))}
           </div>
-          <p className="mt-5 leading-relaxed text-ink/70">
-            Prefer a longer walkthrough? Read the{" "}
-            <Link
-              href="/how-to-convert-salary-to-hourly"
-              className="text-violet-soft underline hover:no-underline"
-            >
-              how to convert salary to hourly guide
-            </Link>{" "}
-            or browse the{" "}
-            <Link
-              href="/salary-conversion-chart"
-              className="text-violet-soft underline hover:no-underline"
-            >
-              salary conversion chart
+          <p className="mt-5 text-sm text-ink/60">
+            Prefer a longer walkthrough with examples? Read{" "}
+            <Link href="/how-to-use-wordle-calculator" className="font-semibold text-teal-deep underline">
+              how to use the Wordle Calculator
             </Link>
             .
           </p>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            How to use this calculator step by step
-          </h2>
-          <p className="mb-6 max-w-3xl leading-relaxed text-ink/80">
-            You do not need a spreadsheet. Enter your numbers above, tune the schedule, and read the
-            highlighted hourly result plus the full frequency table.
-          </p>
-          <ol className="mb-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                n: "01",
-                t: "Enter pay amount",
-                d: "Use annual, monthly, biweekly, weekly, or daily—whichever matches your offer letter or paycheck.",
-              },
-              {
-                n: "02",
-                t: "Set hours and weeks",
-                d: "Default is 40 × 52. Drop to 20 hours for part time or 50 weeks if you take unpaid leave.",
-              },
-              {
-                n: "03",
-                t: "Check hourly + breakdown",
-                d: "Your hourly rate appears first, with daily through annual totals underneath for planning.",
-              },
-              {
-                n: "04",
-                t: "Flip the direction",
-                d: "Switch to Hourly → Salary when you need an annual figure from an hourly posting.",
-              },
-            ].map((step) => (
-              <li key={step.n} className="border-t border-violet/40 pt-4">
-                <span className="font-display text-sm font-bold text-emerald-soft">{step.n}</span>
-                <h3 className="mt-2 font-display text-xl font-semibold text-ink">{step.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{step.d}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div>
+              <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+                What is Wordle and how do you play?
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-ink/75">
+                Wordle is a daily five-letter word game popularized by Josh Wardle and now published
+                by The New York Times. You get six guesses. After each guess, tiles turn green
+                (right letter, right spot), yellow (right letter, wrong spot), or gray (letter not
+                in the word). Everyone shares the same puzzle each day, which is why score grids
+                became a social habit.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-ink/75">
+                Good play starts with a word rich in common letters, then reuses every green and
+                yellow confirmation. When the board gets crowded, this Wordle Calculator does the
+                bookkeeping so you can focus on the only choice that matters: the next guess.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+                More than a generic word finder
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-ink/75">
+                A plain word finder only cares which letters exist. A Wordle Calculator / solver /
+                helper respects position: greens are locked to a slot, yellows must appear somewhere
+                else, and grays are excluded unless another clue proves the letter still belongs.
+                That is why results stay short and relevant instead of dumping every five-letter
+                dictionary entry.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-ink/75">
+                Use it as a Wordle helper when you are two or three guesses in and the options feel
+                endless. The fewer words left, the closer you are—and a ranked next guess tells you
+                which play earns the most information.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section className="mb-16 grid gap-10 md:grid-cols-2 md:items-center">
-          <div className="relative order-2 aspect-video overflow-hidden rounded-2xl border border-ink/10 md:order-1">
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
+          <div>
+            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+              What makes this Wordle Calculator different
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Many helpers dump an unsorted dictionary dump after you type a few letters. This
+              Wordle Calculator is built for the moment you are mid-puzzle: lock greens, respect
+              yellow bans, drop grays, then see which answers still fit and which guess teaches the
+              most.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Ranking uses letter frequency across the answer bank—not random alphabetical order—so
+              openers and mid-game plays favor high-information letters in strong positions. Hard
+              mode and uncommon-guess toggles keep the same engine flexible for different play
+              styles.
+            </p>
+            <ul className="mt-6 space-y-3 text-ink/80">
+              {featureCards.map((item) => (
+                <li key={item.title} className="flex gap-3">
+                  <span className="mt-1.5 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-teal" />
+                  <span>
+                    <strong className="text-ink">{item.title}.</strong> {item.body}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-sm text-ink/60">
+              Explore the full feature list on the{" "}
+              <Link href="/features" className="font-semibold text-teal-deep underline">
+                features page
+              </Link>{" "}
+              or jump to the{" "}
+              <Link href="/wordle-solver" className="font-semibold text-teal-deep underline">
+                Wordle Solver
+              </Link>{" "}
+              view.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-sm">
             <Image
               src={BRAND_FEATURE_2}
-              alt="Hourly wage converted to annual salary with full-time and part-time scenarios"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              quality={70}
-              className="object-cover"
+              alt="Wordle Calculator online filtering green yellow and gray letter clues"
+              width={1600}
+              height={900}
+              sizes="(max-width: 1024px) 100vw, 560px"
+              className="h-auto w-full object-cover"
             />
           </div>
-          <div className="order-1 md:order-2">
-            <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-              Adjust hours per week and weeks per year
-            </h2>
-            <p className="mb-4 leading-relaxed text-ink/80">
-              A $50,000 salary at 40 hours is about $24.04/hour. The same salary at 30 hours is about
-              $32.05/hour because fewer hours spread across the same annual pay. That difference
-              matters for part-time roles, compressed schedules, and contractors estimating billable
-              time.
-            </p>
-            <p className="mb-4 leading-relaxed text-ink/75">
-              Weeks per year are just as important. Using 50 weeks instead of 52 models two unpaid
-              weeks. Using 48 weeks can approximate longer leave. The calculator multiplies your
-              chosen hours and weeks so annual hours stay honest.
-            </p>
-            <p className="leading-relaxed text-ink/75">
-              For schedule-focused examples, see{" "}
-              <Link
-                href="/blog/part-time-salary-to-hourly"
-                className="text-violet-soft underline hover:no-underline"
-              >
-                part-time salary to hourly
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="/blog/how-many-work-hours-in-a-year"
-                className="text-violet-soft underline hover:no-underline"
-              >
-                how many work hours are in a year
-              </Link>
-              .
-            </p>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Full pay-frequency results explained
-          </h2>
-          <p className="mb-6 max-w-3xl leading-relaxed text-ink/80">
-            Once you have an hourly rate, the other frequencies fall out of multiplication. Daily
-            uses your hours-per-day setting. Weekly multiplies by hours per week. Biweekly doubles
-            the weekly figure. Semi-monthly divides annual pay by 24. Monthly divides by 12.
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Daily & weekly",
-                text: "Helpful for short contract quotes and comparing shifts when hours vary day to day.",
-              },
-              {
-                title: "Biweekly & semi-monthly",
-                text: "Match U.S. payroll calendars so paycheck-sized numbers look familiar before taxes.",
-              },
-              {
-                title: "Monthly & annual",
-                text: "Use for budgeting, rent ratios, and side-by-side offer letters written in different formats.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-ink/10 bg-white p-5"
-              >
-                <h3 className="font-display text-lg font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="rounded-[1.75rem] border border-ink/10 bg-white p-6 shadow-sm md:p-8">
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div>
+                <h2 className="font-display text-3xl font-bold text-ink">
+                  Strong Wordle starting words
+                </h2>
+                <p className="mt-3 text-ink/70">
+                  Before any clues exist, the calculator ranks openers by how often their letters
+                  appear in the answer bank and where those letters usually sit. These are reliable
+                  first guesses—not guaranteed day-one greens.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {openers.map((item, index) => (
+                    <span
+                      key={item.word}
+                      className={`rounded-xl border px-3 py-2 font-mono text-sm font-bold uppercase tracking-wider ${
+                        index < 3
+                          ? "border-orange/30 bg-orange/10 text-orange-deep"
+                          : "border-ink/10 bg-[#F4F8F7] text-ink"
+                      }`}
+                    >
+                      {item.word}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 space-y-3 text-sm text-ink/75">
+                  <p>
+                    <strong className="text-ink">Vowel-heavy openers:</strong> ADIEU, AUDIO, OUIJA,
+                    AUREI — fast vowel checks when you want early feedback.
+                  </p>
+                  <p>
+                    <strong className="text-ink">Consonant coverage:</strong> CRANE, SLATE, TRACE,
+                    STARE — stronger overall letter fishing for most boards.
+                  </p>
+                  <p>
+                    <strong className="text-ink">Common follow-ups:</strong> ROUND, POINT, LIGHT,
+                    MOUND — useful second-guess patterns after a sparse opener.
+                  </p>
+                </div>
+                <p className="mt-4 text-sm text-ink/60">
+                  Full opener comparisons and second-guess pairs:{" "}
+                  <Link
+                    href="/best-wordle-starting-words"
+                    className="font-semibold text-teal-deep underline"
+                  >
+                    best Wordle starting words
+                  </Link>
+                  .
+                </p>
               </div>
-            ))}
+              <div>
+                <h3 className="font-display text-xl font-bold text-ink">
+                  Most common answer letters
+                </h3>
+                <p className="mt-2 text-sm text-ink/65">
+                  Frequency across the likely-answer list (unique letter presence). Prioritize these
+                  early when you still have information to gather.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[280px] text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-ink/10 text-ink/55">
+                        <th className="py-2 pr-3 font-semibold">Letter</th>
+                        <th className="py-2 font-semibold">Answer frequency</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {topLetters.map((row) => (
+                        <tr key={row.letter} className="border-b border-ink/5">
+                          <td className="py-2 pr-3 font-mono text-base font-bold uppercase text-teal-deep">
+                            {row.letter}
+                          </td>
+                          <td className="py-2 text-ink/75">{row.count.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16 grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-              Reverse it: hourly wage to salary
-            </h2>
-            <p className="mb-4 leading-relaxed text-ink/80">
-              Job boards often list hourly rates while your budget lives in annual terms. Multiply
-              hourly × hours/week × weeks/year to annualize—or flip the calculator mode and let it
-              fill every frequency for you.
-            </p>
-            <p className="mb-4 leading-relaxed text-ink/75">
-              Example: $25/hour × 40 × 52 = $52,000/year. Cut to 20 hours and the same rate becomes
-              $26,000/year. That reverse view is why we built a dedicated{" "}
-              <Link
-                href="/hourly-to-salary-calculator"
-                className="text-violet-soft underline hover:no-underline"
-              >
-                hourly to salary calculator
-              </Link>
-              .
-            </p>
-          </div>
-          <div className="relative aspect-video overflow-hidden rounded-2xl border border-ink/10">
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-sm order-2 lg:order-1">
             <Image
               src={BRAND_FEATURE_3}
-              alt="Salary to hourly calculator tool interface for converting pay both ways"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              quality={70}
-              className="object-cover"
+              alt="Wordle Calculator tool ranking remaining answers after each guess"
+              width={1600}
+              height={900}
+              sizes="(max-width: 1024px) 100vw, 560px"
+              className="h-auto w-full object-cover"
             />
           </div>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Salary vs hourly pay at a glance
-          </h2>
-          <p className="mb-6 max-w-3xl leading-relaxed text-ink/80">
-            Salaried roles usually trade overtime eligibility for predictable annual pay. Hourly
-            roles often track every hour and may include overtime premiums. Converting both to the
-            same hourly lens makes the trade-offs clearer before you negotiate.
-          </p>
-          <div className="mb-6 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-ink/10 bg-white p-6">
-              <h3 className="font-display text-xl font-semibold text-ink">Salaried</h3>
-              <p className="mt-3 leading-relaxed text-ink/75">
-                Steady annual figure, easier long-term budgeting, and benefits packages that are
-                often richer—though long weeks can quietly lower your effective hourly rate. Many
-                U.S. salaried roles are overtime-exempt under federal rules, so extra hours may not
-                raise the paycheck unless the company offers another form of compensation.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-ink/10 bg-white p-6">
-              <h3 className="font-display text-xl font-semibold text-ink">Hourly</h3>
-              <p className="mt-3 leading-relaxed text-ink/75">
-                Transparent rate math and overtime potential (often time-and-a-half after 40 hours
-                when non-exempt)—balanced by income that moves when schedules shrink. Dig deeper in
-                our{" "}
-                <Link
-                  href="/blog/salary-vs-hourly-pay"
-                  className="text-violet-soft underline hover:no-underline"
-                >
-                  salary vs hourly pay
-                </Link>{" "}
-                guide.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-xl border border-ink/10 bg-white p-5 sm:p-6">
-            <h3 className="mb-2 font-display text-lg font-semibold text-ink">
-              Exempt vs non-exempt (quick note)
-            </h3>
-            <p className="leading-relaxed text-ink/75">
-              Classification affects overtime—not the basic salary-to-hourly formula. This calculator
-              estimates gross equivalents only. Confirm exempt status, overtime premiums, and local
-              labor rules with your employer or a qualified advisor before making decisions.
+          <div className="order-1 lg:order-2">
+            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+              Color clues, hard mode, and honest limits
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Green locks a letter in place. Yellow says “present, but not here.” Gray removes a
+              letter unless another clue proves it still belongs. Getting those three states right
+              is 90% of accurate Wordle math—and exactly what this calculator listens to.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Hard mode players must reuse every revealed clue. Flip the hard mode toggle so the
+              shortlist only includes legal hard-mode guesses. If you want strategy beyond the tool,
+              read our guides on{" "}
+              <Link href="/blog/how-wordle-colors-work" className="font-semibold text-teal-deep underline">
+                how Wordle colors work
+              </Link>{" "}
+              and{" "}
+              <Link href="/blog/wordle-hard-mode-guide" className="font-semibold text-teal-deep underline">
+                Wordle hard mode
+              </Link>
+              .
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              This site is an unofficial helper. It does not scrape or publish today’s official
+              answer on load. Your clues in, remaining words out—so you stay in control of how much
+              help you accept.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            What a salary range means when you convert offers
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+            Practical Wordle strategy with a calculator
           </h2>
-          <p className="mb-6 max-w-3xl leading-relaxed text-ink/80">
-            Job posts often show a <strong className="text-ink">salary range</strong>—a low, midpoint,
-            and maximum the employer can pay for a role. Convert each end of the band to hourly with
-            the same hours assumption so you can compare it to hourly postings and contractor rates.
+          <p className="mt-3 max-w-3xl text-lg text-ink/70">
+            Use the tool as a coach, not only as an answer key. Strong players gather information
+            early, avoid wasting guesses on near-duplicates, and save the “obvious” answer attempt
+            for when the list is short.
           </p>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {[
               {
-                title: "Low end",
-                text: "Entry or minimum budgeted pay. Useful as a floor when you model worst-case hourly equivalents.",
+                title: "Open for information",
+                body: "First guesses should test frequent letters. Avoid repeat letters on guess one so you do not waste a slot that could learn something new.",
               },
               {
-                title: "Midpoint",
-                text: "Typical target for the role. Convert this figure first when you need a “fair” comparison rate.",
+                title: "Second guess with intent",
+                body: "If guess one taught little, pick a second word that introduces new high-value letters instead of rearranging the same five.",
               },
               {
-                title: "Maximum",
-                text: "Top of the band for experience or scarce skills. Still convert it—headline dollars can hide long weeks.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-ink/10 bg-white p-5">
-                <h3 className="font-display text-lg font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-5 leading-relaxed text-ink/70">
-            Example: a $70,000–$90,000 range at 40×52 is about $33.65–$43.27 per hour. Plug both ends
-            into the calculator above before you negotiate.
-          </p>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Who should use this salary to hourly calculator
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Job seekers",
-                text: "Compare a salaried offer against an hourly posting without guessing what “competitive” means.",
-                img: BRAND_FEATURE_4,
-                alt: "Mobile-friendly salary to hourly calculator for comparing job offers",
+                title: "Only play legal words",
+                body: "Before you submit, confirm greens stay put, yellows appear somewhere, and no gray letter sneaks back in. Every guess should still be a possible winner.",
               },
               {
-                title: "Career switchers",
-                text: "Translate contractor day rates, part-time salaries, and full-time packages into one hourly view.",
-                img: BRAND_FEATURE_2,
-                alt: "Online salary conversion for career planning",
+                title: "Use the keyboard as a checklist",
+                body: "Late game, unused letters on the on-screen keyboard are your shortlist. Mix the remaining slots with those leftovers instead of inventing random words.",
               },
               {
-                title: "Managers & HR",
-                text: "Explain pay bands quickly when candidates ask what a salary equals per hour.",
-                img: BRAND_FEATURE_3,
-                alt: "Pay rate conversion tool for managers and HR",
+                title: "Solve when the list is small",
+                body: "Once the calculator shows a handful of words, switch from probing to finishing. That is when answering beats information gathering.",
+              },
+              {
+                title: "Draft before you lock",
+                body: "Jot a candidate offline, then re-check it against greens, yellows, and grays. A ten-second review saves more streaks than a lucky smash of keys.",
               },
             ].map((card) => (
-              <div
+              <article
                 key={card.title}
-                className="overflow-hidden rounded-2xl border border-ink/10 bg-white"
+                className="rounded-2xl border border-ink/10 bg-white p-5 shadow-sm"
               >
-                <div className="relative aspect-[16/10]">
-                  <Image
-                    src={card.img}
-                    alt={card.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={65}
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-display text-xl font-semibold text-ink">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{card.text}</p>
-                </div>
-              </div>
+                <h3 className="font-display text-xl font-bold text-ink">{card.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{card.body}</p>
+              </article>
             ))}
           </div>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Example salary to hourly conversions (40-hour week)
-          </h2>
-          <p className="mb-6 max-w-3xl leading-relaxed text-ink/80">
-            Quick reference using 52 paid weeks. The 35-hour column shows how a shorter week raises
-            the equivalent hourly rate for the same annual salary.
-          </p>
-          <div className="overflow-x-auto rounded-2xl border border-ink/10">
-            <table className="min-w-full text-left text-sm">
-              <thead className="bg-brand-deep text-ink/70">
-                <tr>
-                  <th className="px-4 py-3 font-semibold">Annual salary</th>
-                  <th className="px-4 py-3 font-semibold">Hourly @ 40 hrs</th>
-                  <th className="px-4 py-3 font-semibold">Hourly @ 35 hrs</th>
-                </tr>
-              </thead>
-              <tbody>
-                {exampleRows.map((row) => (
-                  <tr key={row.annual} className="border-t border-ink/10 text-ink/85">
-                    <td className="px-4 py-3 font-medium text-ink">
-                      {formatMoney(row.annual, "USD", 0)}
-                    </td>
-                    <td className="px-4 py-3">{formatMoney(row.hourly40)}</td>
-                    <td className="px-4 py-3">{formatMoney(row.hourly35)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-sm text-ink/60">
-            Need monthly-specific math? See{" "}
-            <Link
-              href="/blog/monthly-salary-to-hourly"
-              className="text-violet-soft underline hover:no-underline"
-            >
-              monthly salary to hourly
+          <div className="mt-6 flex flex-wrap gap-3 text-sm">
+            <Link href="/blog/wordle-strategy-tips" className="font-semibold text-teal-deep underline">
+              Wordle strategy tips
             </Link>
-            .
-          </p>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Tips for job offers and negotiations
-          </h2>
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {[
-              "Convert every offer to hourly using the same hours assumption before you compare titles.",
-              "Ask whether the salary expects overtime-exempt work that regularly exceeds 40 hours.",
-              "Model unpaid leave with fewer weeks so the rate reflects time you will not be paid.",
-              "Annualize hourly roles the same way so benefits and schedule differences stay visible.",
-              "Remember bonuses and equity are outside this gross converter—treat them separately.",
-              "Use the conversion chart when you need a printable reference for common pay bands.",
-            ].map((item) => (
-              <li
-                key={item}
-                className="flex gap-3 rounded-xl border border-ink/10 bg-white px-4 py-3 text-ink/80"
-              >
-                <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-emerald" aria-hidden />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Limitations and honest expectations
-          </h2>
-          <p className="mb-4 max-w-3xl leading-relaxed text-ink/80">
-            This salary to hourly calculator estimates <strong className="text-ink">gross</strong>{" "}
-            pay. It does not withhold federal or state income tax, Social Security, Medicare,
-            retirement contributions, or health premiums. Local labor rules, exempt vs non-exempt
-            status, and overtime premiums can change what you actually earn.
-          </p>
-          <p className="max-w-3xl leading-relaxed text-ink/75">
-            Treat results as a planning aid. For payroll-accurate figures, confirm with your
-            employer or a qualified tax professional. Read our{" "}
-            <Link href="/disclaimer" className="text-violet-soft underline hover:no-underline">
-              disclaimer
-            </Link>{" "}
-            for the full scope statement.
-          </p>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="mb-4 font-display text-2xl font-bold text-ink md:text-3xl">
-            Related guides on salarytohourlycalculator.io
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                href: "/how-to-convert-salary-to-hourly",
-                title: "How to convert salary to hourly",
-                text: "Step-by-step formula with schedule adjustments.",
-              },
-              {
-                href: "/hourly-to-salary-calculator",
-                title: "Hourly to salary calculator",
-                text: "Annualize any hourly wage for budgeting.",
-              },
-              {
-                href: "/features",
-                title: "Calculator features",
-                text: "See what this free web tool includes.",
-              },
-            ].map((card) => (
-              <Link
-                key={card.href}
-                href={card.href}
-                className="rounded-2xl border border-ink/10 bg-white p-5 transition hover:border-violet/30"
-              >
-                <h3 className="font-display text-xl font-semibold text-ink">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{card.text}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-16 rounded-2xl border border-violet/30 bg-gradient-to-br from-violet/20 to-emerald/10 p-6 sm:p-8">
-          <h2 className="mb-3 font-display text-2xl font-bold text-ink md:text-3xl">
-            Convert your pay on salarytohourlycalculator.io
-          </h2>
-          <p className="mb-5 max-w-2xl leading-relaxed text-ink/80">
-            Enter your salary, set your real hours, and get a clear hourly rate with every common
-            pay frequency. Free, private in your browser, and ready whenever an offer lands.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/#calculator"
-              className="inline-flex rounded-xl bg-violet px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_-12px_rgba(99,102,241,0.9)] hover:brightness-110"
-            >
-              Open the calculator
+            <Link href="/blog/best-second-wordle-guesses" className="font-semibold text-teal-deep underline">
+              Best second Wordle guesses
             </Link>
-            <Link
-              href="/blog"
-              className="inline-flex rounded-xl border border-ink/20 px-5 py-3 text-sm font-semibold text-ink hover:bg-white"
-            >
-              Read pay guides
+            <Link href="/blog" className="font-semibold text-teal-deep underline">
+              All guides
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <FaqSection
-          items={faqs}
-          title="Frequently asked questions about salary to hourly conversion"
-          includeSchema={false}
-        />
-      </div>
+      <section className="px-4 pb-14 sm:px-6 md:px-8">
+        <div className="container mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
+          <div>
+            <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+              Built for stuck boards and clean finishes
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Mid-game Wordle is where most streaks break: two greens, a yellow, and twenty words
+              still possible. Paste those clues into the Wordle Calculator, scan the ranked list,
+              and choose a guess that either ends the puzzle or splits the remaining set.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Beginners get a transparent explanation of each color. Advanced players get hard mode
+              filtering and uncommon probes. Everyone gets a free tool that stays on
+              wordlecalculator.net—no app install required.
+            </p>
+            <div className="mt-6">
+              <CtaButton href="/#calculator" size="sm" ariaLabel="Return to Wordle Calculator">
+                TRY IT NOW
+              </CtaButton>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white shadow-sm">
+            <Image
+              src={BRAND_FEATURE_4}
+              alt="Wordle Calculator app-style view for mobile and desktop browsers"
+              width={1600}
+              height={900}
+              sizes="(max-width: 1024px) 100vw, 560px"
+              className="h-auto w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-16 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <FaqSection
+            title="Wordle Calculator FAQs"
+            items={faqs}
+            includeSchema={false}
+          />
+        </div>
+      </section>
+
+      <section className="px-4 pb-16 sm:px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl overflow-hidden rounded-[1.75rem] border border-teal/20 bg-gradient-to-br from-teal/10 via-white to-orange/10 p-8 md:p-10">
+          <h2 className="font-display text-3xl font-bold text-ink">
+            Ready for a sharper next guess?
+          </h2>
+          <p className="mt-3 max-w-2xl text-lg text-ink/75">
+            Open the free Wordle Calculator, enter today’s clues, and turn a crowded board into a
+            short ranked list. Play for learning, play for the streak—either way, start with better
+            information.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <CtaButton href="/#calculator">OPEN CALCULATOR</CtaButton>
+            <Link
+              href="/contact-us"
+              className="inline-flex items-center rounded-2xl border border-ink/12 bg-white px-6 py-3.5 text-base font-semibold text-ink"
+            >
+              Contact us
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

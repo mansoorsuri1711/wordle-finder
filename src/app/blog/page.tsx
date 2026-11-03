@@ -12,13 +12,13 @@ import {
 } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Blog — Salary to Hourly Guides",
+  title: "Blog — Wordle Calculator Guides",
   description:
-    "SERP-driven guides: salary vs hourly pay, work hours in a year (2080), monthly salary to hourly, and part-time salary conversion.",
+    "SERP-driven Wordle guides: strategy tips, how colors work, hard mode, and best second guesses—written for players who use a Wordle Calculator.",
   alternates: { canonical: `${SITE_ORIGIN}/blog` },
   openGraph: {
-    title: "Blog — Salary to Hourly Guides",
-    description: "Practical pay conversion articles people actually search for.",
+    title: "Blog — Wordle Calculator Guides",
+    description: "Practical Wordle articles people actually search for.",
     url: `${SITE_ORIGIN}/blog`,
     siteName: SITE_NAME,
     type: "website",
@@ -27,44 +27,44 @@ export const metadata: Metadata = {
 
 const posts = [
   {
-    href: "/blog/salary-vs-hourly-pay",
-    title: "Salary vs Hourly Pay: Pros, Cons, and How to Compare",
+    href: "/blog/wordle-strategy-tips",
+    title: "Wordle Strategy Tips That Actually Shorten Your Average",
     excerpt:
-      "Side-by-side differences, overtime realities, and how to convert both into the same hourly lens.",
+      "Open for information, split remaining sets, and know when to stop probing and start solving.",
     date: "November 2026",
-    read: "11 min",
+    read: "10 min",
     image: BRAND_HERO,
-    alt: "Comparing salary versus hourly pay with a calculator",
+    alt: "Wordle strategy tips with calculator-ranked guesses",
   },
   {
-    href: "/blog/how-many-work-hours-in-a-year",
-    title: "How Many Work Hours Are in a Year? (2080 Explained)",
+    href: "/blog/how-wordle-colors-work",
+    title: "How Wordle Colors Work: Green, Yellow, and Gray Rules",
     excerpt:
-      "Why 40×52 = 2,080, when to use 2,000 hours, and how weeks change your hourly rate.",
-    date: "November 2026",
-    read: "9 min",
-    image: BRAND_FEATURE_3,
-    alt: "Work hours in a year explained for salary conversion",
-  },
-  {
-    href: "/blog/monthly-salary-to-hourly",
-    title: "How to Convert Monthly Salary to Hourly",
-    excerpt:
-      "Annualize monthly pay, divide by your hours, and avoid the common 160-hour shortcut trap.",
+      "Exact tile meanings, double-letter traps, and how to enter colors correctly in a Wordle Calculator.",
     date: "November 2026",
     read: "8 min",
-    image: BRAND_FEATURE_2,
-    alt: "Monthly salary converted to hourly wage",
+    image: BRAND_FEATURE_3,
+    alt: "Wordle green yellow and gray tile meanings explained",
   },
   {
-    href: "/blog/part-time-salary-to-hourly",
-    title: "Part-Time Salary to Hourly: Custom Hours Guide",
+    href: "/blog/wordle-hard-mode-guide",
+    title: "Wordle Hard Mode Guide: Rules, Tips, and Calculator Use",
     excerpt:
-      "Convert part-time salaries accurately by setting real weekly hours instead of assuming full time.",
+      "What hard mode forces you to reuse, why streaks get harder, and how to keep suggestions legal.",
+    date: "November 2026",
+    read: "9 min",
+    image: BRAND_FEATURE_2,
+    alt: "Wordle hard mode guide with constrained guesses",
+  },
+  {
+    href: "/blog/best-second-wordle-guesses",
+    title: "Best Second Wordle Guesses After Your Opener",
+    excerpt:
+      "When to introduce new letters, when to chase greens, and how second guesses pair with openers.",
     date: "November 2026",
     read: "8 min",
     image: BRAND_FEATURE_4,
-    alt: "Part-time salary to hourly conversion examples",
+    alt: "Best second Wordle guesses after the starting word",
   },
 ];
 
@@ -74,18 +74,18 @@ export default function BlogPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }]} />
       <div className="container mx-auto max-w-5xl px-4 pb-10 pt-8">
         <h1 className="mb-3 font-display text-3xl font-bold text-ink md:text-4xl">
-          Salary to hourly blog
+          Wordle Calculator blog
         </h1>
         <p className="mb-10 text-lg text-ink/80">
-          Only topics people search alongside salary-to-hourly conversion: pay structure comparisons,
-          the 2080-hour year, monthly math, and part-time schedules. No filler posts.
+          Only topics people search alongside Wordle helpers: strategy, tile colors, hard mode, and
+          second guesses. No filler posts.
         </p>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {posts.map((post) => (
             <Link
               key={post.href}
               href={post.href}
-              className="group block overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm transition-colors hover:border-violet/40 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet"
+              className="group block overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm transition-colors hover:border-teal/40 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
             >
               <article>
                 <div className="relative aspect-video">
@@ -98,13 +98,13 @@ export default function BlogPage() {
                   />
                 </div>
                 <div className="p-5">
-                  <p className="mb-2 text-xs text-ink/50">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink/45">
                     {post.date} · {post.read}
                   </p>
-                  <h2 className="font-display text-xl font-semibold text-ink group-hover:text-violet">
+                  <h2 className="font-display text-xl font-bold text-ink group-hover:text-teal-deep">
                     {post.title}
                   </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{post.excerpt}</p>
+                  <p className="mt-2 text-sm text-ink/70">{post.excerpt}</p>
                 </div>
               </article>
             </Link>

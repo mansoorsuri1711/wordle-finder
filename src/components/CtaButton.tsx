@@ -47,7 +47,7 @@ const sizeClass: Record<CtaSize, string> = {
 };
 
 const baseClass =
-  'download-btn inline-flex items-center justify-center text-white font-semibold border border-violet/40 bg-violet hover:bg-violet-deep transition-all group shadow-[0_12px_28px_-14px_rgba(99,102,241,0.65)]';
+  'download-btn inline-flex items-center justify-center text-white font-semibold border border-teal/40 bg-teal hover:bg-teal-deep transition-all group shadow-[0_12px_28px_-14px_rgba(13,148,136,0.65)]';
 
 function ButtonInner({
   children,

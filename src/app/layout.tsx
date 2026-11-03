@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Sora } from "next/font/google";
+import localFont from "next/font/local";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Header from "@/components/Header";
@@ -18,6 +19,24 @@ import {
   TWITTER_IMAGE,
 } from "@/lib/siteConfig";
 
+const gulkave = localFont({
+  src: [
+    {
+      path: "../fonts/Gulkave-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Gulkave-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gulkave",
+  display: "swap",
+  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
+});
+
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
@@ -25,21 +44,12 @@ const outfit = Outfit({
   adjustFontFallback: true,
 });
 
-const sora = Sora({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sora",
-  weight: "600",
-  adjustFontFallback: true,
-  preload: false,
-});
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: "#F6F6FF",
+  themeColor: "#F3F7F6",
   viewportFit: "cover",
   interactiveWidget: "resizes-visual",
 };
@@ -47,18 +57,23 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
   title: {
-    default: "Salary to Hourly Calculator — Free Pay Rate Converter",
+    default: "Wordle Calculator — Free Helper & Next-Guess Ranker",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_TAGLINE,
   keywords: [
-    "salary to hourly calculator",
-    "convert salary to hourly",
-    "hourly rate calculator",
-    "annual salary to hourly",
-    "hourly to salary calculator",
-    "pay rate converter",
-    "salary conversion chart",
+    "wordle calculator",
+    "wordle solver",
+    "wordle helper",
+    "wordle help",
+    "wordle finder",
+    "wordle word finder",
+    "wordle answer finder",
+    "wordle guesser",
+    "5 letter words for wordle",
+    "5 letter wordle solver",
+    "wordle tips",
+    "best wordle starting words",
   ],
   authors: [{ name: `${SITE_NAME} Team` }],
   creator: SITE_NAME,
@@ -91,7 +106,7 @@ export const metadata: Metadata = {
     languages: { "en-US": SITE_ORIGIN, en: SITE_ORIGIN },
   },
   openGraph: {
-    title: "Salary to Hourly Calculator — Free Pay Rate Converter",
+    title: "Wordle Calculator — Free Helper & Next-Guess Ranker",
     description: SITE_TAGLINE,
     url: SITE_ORIGIN,
     siteName: SITE_NAME,
@@ -102,26 +117,26 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Salary to Hourly Calculator on salarytohourlycalculator.io",
+        alt: "Wordle Calculator on wordlecalculator.net",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Salary to Hourly Calculator — Free Pay Rate Converter",
+    title: "Wordle Calculator — Free Helper & Next-Guess Ranker",
     description: SITE_TAGLINE,
     images: [
       {
         url: TWITTER_IMAGE,
         width: 1200,
         height: 600,
-        alt: "Salary to Hourly Calculator on salarytohourlycalculator.io",
+        alt: "Wordle Calculator on wordlecalculator.net",
       },
     ],
   },
   applicationName: SITE_NAME,
-  category: "Finance",
-  classification: "Salary to Hourly Calculator",
+  category: "Games",
+  classification: "Wordle Calculator",
 };
 
 export default function RootLayout({
@@ -133,17 +148,17 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${outfit.variable} ${sora.variable}`}
-      style={{ backgroundColor: "#F6F6FF", colorScheme: "light" }}
+      className={`${gulkave.variable} ${outfit.variable}`}
+      style={{ backgroundColor: "#F3F7F6", colorScheme: "light" }}
     >
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="theme-color" content="#F6F6FF" />
+        <meta name="theme-color" content="#F3F7F6" />
         <style
           dangerouslySetInnerHTML={{
             __html:
-              "html,body{background-color:#F6F6FF!important;color-scheme:light}#__next,main{background-color:transparent}",
+              "html,body{background-color:#F3F7F6!important;color-scheme:light}#__next,main{background-color:transparent}",
           }}
         />
         <link rel="icon" href={`/favicon.ico?v=${ASSET_VERSION}`} type="image/x-icon" sizes="48x48" />
@@ -160,7 +175,7 @@ export default function RootLayout({
       </head>
       <body
         className="font-sans antialiased text-ink min-h-screen flex flex-col bg-brand site-atmosphere"
-        style={{ backgroundColor: "#F6F6FF" }}
+        style={{ backgroundColor: "#F3F7F6" }}
         suppressHydrationWarning
       >
         <MobileMenuProvider>

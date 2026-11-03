@@ -12,7 +12,7 @@ export default function Footer() {
             <p className="mb-4 text-sm text-ink/65">{SITE_TAGLINE}</p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-sm text-violet-soft underline hover:no-underline"
+              className="text-sm text-teal underline hover:no-underline"
             >
               {CONTACT_EMAIL}
             </a>
@@ -21,10 +21,13 @@ export default function Footer() {
           <div>
             <h2 className="mb-4 text-lg font-semibold text-ink">Tools</h2>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="text-ink/70 hover:text-ink hover:underline">Salary to hourly calculator</Link></li>
-              <li><Link href="/hourly-to-salary-calculator" className="text-ink/70 hover:text-ink hover:underline">Hourly to salary calculator</Link></li>
-              <li><Link href="/salary-conversion-chart" className="text-ink/70 hover:text-ink hover:underline">Salary conversion chart</Link></li>
-              <li><Link href="/how-to-convert-salary-to-hourly" className="text-ink/70 hover:text-ink hover:underline">How to convert</Link></li>
+              <li><Link href="/" className="text-ink/70 hover:text-ink hover:underline">Wordle Calculator</Link></li>
+              <li><Link href="/wordle-solver" className="text-ink/70 hover:text-ink hover:underline">Wordle Solver</Link></li>
+              <li><Link href="/wordle-helper" className="text-ink/70 hover:text-ink hover:underline">Wordle Helper</Link></li>
+              <li><Link href="/wordle-finder" className="text-ink/70 hover:text-ink hover:underline">Wordle Finder</Link></li>
+              <li><Link href="/5-letter-words-for-wordle" className="text-ink/70 hover:text-ink hover:underline">5 letter words for Wordle</Link></li>
+              <li><Link href="/best-wordle-starting-words" className="text-ink/70 hover:text-ink hover:underline">Best starting words</Link></li>
+              <li><Link href="/how-to-use-wordle-calculator" className="text-ink/70 hover:text-ink hover:underline">How to use</Link></li>
               <li><Link href="/features" className="text-ink/70 hover:text-ink hover:underline">Features</Link></li>
             </ul>
           </div>
@@ -32,10 +35,10 @@ export default function Footer() {
           <div>
             <h2 className="mb-4 text-lg font-semibold text-ink">Guides</h2>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/salary-vs-hourly-pay" className="text-ink/70 hover:text-ink hover:underline">Salary vs hourly pay</Link></li>
-              <li><Link href="/blog/how-many-work-hours-in-a-year" className="text-ink/70 hover:text-ink hover:underline">Work hours in a year</Link></li>
-              <li><Link href="/blog/monthly-salary-to-hourly" className="text-ink/70 hover:text-ink hover:underline">Monthly to hourly</Link></li>
-              <li><Link href="/blog/part-time-salary-to-hourly" className="text-ink/70 hover:text-ink hover:underline">Part-time conversion</Link></li>
+              <li><Link href="/blog/wordle-strategy-tips" className="text-ink/70 hover:text-ink hover:underline">Wordle strategy tips</Link></li>
+              <li><Link href="/blog/how-wordle-colors-work" className="text-ink/70 hover:text-ink hover:underline">How Wordle colors work</Link></li>
+              <li><Link href="/blog/wordle-hard-mode-guide" className="text-ink/70 hover:text-ink hover:underline">Hard mode guide</Link></li>
+              <li><Link href="/blog/best-second-wordle-guesses" className="text-ink/70 hover:text-ink hover:underline">Best second guesses</Link></li>
               <li><Link href="/about-us" className="text-ink/70 hover:text-ink hover:underline">About</Link></li>
               <li><Link href="/contact-us" className="text-ink/70 hover:text-ink hover:underline">Contact</Link></li>
               <li><Link href="/privacy" className="text-ink/70 hover:text-ink hover:underline">Privacy</Link></li>
@@ -44,14 +47,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="mb-4 text-lg font-semibold text-ink">Start free</h2>
+            <h2 className="mb-4 text-lg font-semibold text-ink">Play smarter</h2>
             <p className="mb-4 text-sm text-ink/65">
-              Convert any salary into an hourly rate with custom hours—right in your browser.
+              Filter today&apos;s clues and rank the strongest next guess—free in your browser.
             </p>
             <CtaButton
               href="/#calculator"
               size="sm"
-              ariaLabel="Open the free salary to hourly calculator"
+              ariaLabel="Open the free Wordle Calculator"
               icon="arrow"
             >
               OPEN CALCULATOR
@@ -65,7 +68,7 @@ export default function Footer() {
             <Link href="/" className="underline hover:no-underline text-ink/80">{SITE_DOMAIN}</Link>
           </p>
           <p className="mt-2 text-xs text-ink/40">
-            Gross pay estimates only. Not tax, legal, or financial advice.
+            Unofficial helper tool. Not affiliated with the New York Times or Wordle.
           </p>
         </div>
       </div>
